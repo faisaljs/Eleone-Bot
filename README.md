@@ -566,4 +566,13 @@ Use `.env.example` as the safe template for required environment variables.
 
 ## License
 
-Private/custom project. Add your preferred license before publishing.
+This project is licensed under the **Eleone Custom Non-Commercial License**.
+
+- Non-commercial use only.
+- No selling or resale.
+- No commercial hosting or monetization.
+- Required credit to the original Owner.
+- No claiming the project as your own.
+- Commercial use requires explicit written permission.
+
+See the [`LICENSE`](./LICENSE) file for the complete terms.
