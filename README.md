@@ -560,7 +560,6 @@ Use `.env.example` as the safe template for required environment variables.
 ## UI Showcase
 
 <p align="center">
-  <img src="./docs/screenshots/avatar-viewer.png" alt="Avatar Viewer" width="420" />
   <img src="./docs/screenshots/music-player-controls.png" alt="Music Player Controls" width="420" />
 </p>
 
