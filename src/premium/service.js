@@ -19,11 +19,11 @@ const { hasVotedOnTopGG } = require("./topgg");
 
 const ALLOWED_THEMES = new Set(["ease", "glass", "neon", "sunset", "ocean", "mono"]);
 const TOKEN_PLANS = [
-    { key: "1w", label: "1 Week", days: 7, priceInr: 99 },
-    { key: "1m", label: "1 Month", days: 30, priceInr: 299 },
-    { key: "6m", label: "6 Months", days: 180, priceInr: 1499 },
-    { key: "1y", label: "1 Year", days: 365, priceInr: 2499 },
-    { key: "permanent", label: "Permanent", days: null, priceInr: 4999 }
+    { key: "1w", label: "1 Week", days: 7, priceInr: 49 },
+    { key: "1m", label: "1 Month", days: 30, priceInr: 89 },
+    { key: "6m", label: "6 Months", days: 180, priceInr: 149 },
+    { key: "1y", label: "1 Year", days: 365, priceInr: 189 },
+    { key: "permanent", label: "Permanent", days: null, priceInr: 249 }
 ];
 
 function normalizeTheme(input) {
