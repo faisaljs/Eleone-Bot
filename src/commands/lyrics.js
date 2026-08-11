@@ -106,24 +106,55 @@ function buildLyricsPayload(view) {
         `**Requester:** ${view.requesterText}`
     ].join("\n");
 
-    const children = [
-        { type: 10, content: `## ${shortText(view.title, 64)}` },
-        { type: 14, divider: true, spacing: 1 },
-        {
+    const headerComponent = view.image
+        ? {
             type: 9,
-            components: [{ type: 10, content: headerInfo }],
-            ...(view.image
-                ? {
-                    accessory: {
-                        type: 11,
-                        media: { url: view.image }
-                    }
+            components: [
+                {
+                    type: 10,
+                    content: headerInfo
                 }
-                : {})
+            ],
+            accessory: {
+                type: 11,
+                media: {
+                    url: view.image
+                }
+            }
+        }
+        : {
+            type: 10,
+            content: headerInfo
+        };
+
+    const children = [
+        {
+            type: 10,
+            content: `## ${shortText(view.title, 64)}`
         },
-        { type: 14, divider: true, spacing: 1 },
+
+        {
+            type: 14,
+            divider: true,
+            spacing: 1
+        },
+
+        headerComponent,
+
+        {
+            type: 14,
+            divider: true,
+            spacing: 1
+        },
+
         ...stanzaComponents,
-        { type: 14, divider: true, spacing: 1 },
+
+        {
+            type: 14,
+            divider: true,
+            spacing: 1
+        },
+
         {
             type: 1,
             components: [
@@ -150,13 +181,27 @@ function buildLyricsPayload(view) {
                 }
             ]
         },
-        { type: 14, divider: true, spacing: 1 },
-        { type: 10, content: `-# Source: ${view.source} - Page ${index + 1}/${total}` }
+
+        {
+            type: 14,
+            divider: true,
+            spacing: 1
+        },
+
+        {
+            type: 10,
+            content: `-# Source: ${view.source} - Page ${index + 1}/${total}`
+        }
     ];
 
     return {
         flags: COMPONENTS_V2_FLAG,
-        components: [{ type: 17, components: children }]
+        components: [
+            {
+                type: 17,
+                components: children
+            }
+        ]
     };
 }
 
