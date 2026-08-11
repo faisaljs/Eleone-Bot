@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/premium",
+      "destination": "/premium.html"
+    },
+    {
+      "source": "/commands",
+      "destination": "/commands.html"
+    },
+    {
+      "source": "/features",
+      "destination": "/features.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact.html"
+    }
+  ]
+}
