@@ -124,8 +124,8 @@ function renderPage({ bot, token, pageIndex, ownerId }) {
 
     const ownerDiscordUrl = process.env.BOT_OWNER_ID
         ? `https://discord.com/users/${process.env.BOT_OWNER_ID}`
-        : (process.env.DEVELOPER_DISCORD_URL || "https://discord.com");
-    const ownerInstaUrl = process.env.DEVELOPER_INSTAGRAM_URL || "https://www.instagram.com/";
+        : (process.env.DEVELOPER_DISCORD_URL || "https://discord.com/users/1148264513343336560");
+    const ownerInstaUrl = process.env.DEVELOPER_INSTAGRAM_URL || "https://www.instagram.com/alexzzpy";
     const ownerLabel = process.env.DEVELOPER_NAME || "Alex";
 
     const pages = [

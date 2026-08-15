@@ -34,8 +34,8 @@ function parseEmoji(raw, fallback) {
 
 function buildExpiryContactPayload(bot, mentionText) {
     const ownerId = bot.config?.noPrefix?.ownerId;
-    const discordInvite = process.env.NO_PREFIX_CONTACT_DISCORD_URL || "https://discord.gg";
-    const instagramUrl = process.env.NO_PREFIX_CONTACT_INSTAGRAM_URL || "https://www.instagram.com/";
+    const discordInvite = process.env.NO_PREFIX_CONTACT_DISCORD_URL || "https://discord.gg/TGF3fCXtRm";
+    const instagramUrl = process.env.NO_PREFIX_CONTACT_INSTAGRAM_URL || "https://www.instagram.com/alexzzpy";
     const ownerDmUrl = ownerId ? `https://discord.com/users/${ownerId}` : discordInvite;
 
     const discordEmoji = parseEmoji(process.env.NO_PREFIX_CONTACT_DISCORD_EMOJI, "<:icons8discord48:1469589509724180480>");

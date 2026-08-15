@@ -43,11 +43,11 @@ function voteUrl(bot) {
     const custom = process.env.TOPGG_VOTE_URL;
     if (custom) return custom;
     const id = bot.client.user?.id;
-    return id ? `https://top.gg/bot/${id}/vote` : "https://top.gg";
+    return id ? `https://top.gg/bot/${id}/vote` : "https://top.gg/bot/1536656542164844644/vote";
 }
 
 function buyUrl() {
-    return process.env.PREMIUM_BUY_URL || "https://discord.gg";
+    return process.env.PREMIUM_BUY_URL || "https://discord.gg/TGF3fCXtRm";
 }
 
 function getPlan(planKey) {

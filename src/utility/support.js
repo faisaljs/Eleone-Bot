@@ -6,8 +6,8 @@ module.exports = {
     description: "Get support links for Eleone.",
     usage: "support",
     async execute({ bot, message }) {
-        const serverUrl = process.env.NO_PREFIX_CONTACT_DISCORD_URL || "https://discord.gg/";
-        const instaUrl = process.env.NO_PREFIX_CONTACT_INSTAGRAM_URL || "https://www.instagram.com/";
+        const serverUrl = process.env.NO_PREFIX_CONTACT_DISCORD_URL || "https://discord.gg/TGF3fCXtRm";
+        const instaUrl = process.env.NO_PREFIX_CONTACT_INSTAGRAM_URL || "https://www.instagram.com/alexzzpy";
         const dmUrl = bot.config?.noPrefix?.ownerId
             ? `https://discord.com/users/${bot.config.noPrefix.ownerId}`
             : serverUrl;
