@@ -17,4 +17,3 @@ jobs:
         uses: Qbox-project/pipeline-pling@v1
         with:
           webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          hide-links: true
