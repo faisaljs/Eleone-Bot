@@ -71,9 +71,3 @@ Use `website` as the publish root. `vercel.json` includes clean-URL rewrites for
 `/features`, `/commands`, `/premium`, `/contact`, `/privacy-policy`, and
 `/terms-of-service`; other hosts will fall back to the `.html` filenames, which
 the nav's active-state logic and internal links both already account for.
-
-Before going live, replace the placeholder contact email and jurisdiction in
-`privacy-policy.html` / `terms-of-service.html`, and update `sitemap.xml` /
-the `og:url` and `canonical` tags in each page's `<head>` if your domain isn't
-`eleone.vercel.app`.
-
