@@ -35,8 +35,24 @@
 }
 
 .plan.highlight {
-  border-color: rgba(11, 136, 255, 0.35);
-  box-shadow: 0 16px 35px rgba(11, 136, 255, 0.22);
+  border-color: rgba(168, 85, 247, 0.4);
+  box-shadow: var(--shadow-md), 0 16px 35px rgba(168, 85, 247, 0.22);
+  position: relative;
+}
+
+.plan.highlight::after {
+  content: "Most Popular";
+  position: absolute;
+  top: -12px;
+  right: 1rem;
+  background: var(--aurora);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
 }
 
 .matrix {

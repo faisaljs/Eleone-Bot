@@ -1,6 +1,8 @@
 (function () {
     var THEME_KEY = "eleone-theme";
     var root = document.documentElement;
+    var prefersReducedMotion =
+        window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     function getStoredTheme() {
         try {
@@ -59,6 +61,12 @@
         var safe = theme === "dark" ? "dark" : "light";
 
         root.setAttribute("data-theme", safe);
+
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) {
+            meta.setAttribute("content", safe === "dark" ? "#05070f" : "#eef1fb");
+        }
+
         paintThemeButton(safe);
 
         if (persist) {
@@ -112,27 +120,40 @@
                 navToggle.setAttribute("aria-expanded", "false");
             });
         });
+
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && navLinks.classList.contains("open")) {
+                navLinks.classList.remove("open");
+                navToggle.setAttribute("aria-expanded", "false");
+                navToggle.focus();
+            }
+        });
     }
 
     // -----------------------------
     // Active Navigation
-    // Supports:
-    // /
-    // /commands
-    // /features
-    // /premium
-    // /contact
+    // Normalizes both clean URLs (/premium, served via vercel.json
+    // rewrites) and direct static-file URLs (/premium.html, the case
+    // on GitHub Pages/Netlify without a rewrite rule) to the same
+    // key, so the nav highlights correctly under either hosting mode.
     // -----------------------------
 
-    var path = location.pathname.replace(/\/+$/, "") || "/";
+    function normalizePath(raw) {
+        var clean = (raw || "/").split("?")[0].split("#")[0];
+        clean = clean.replace(/\/index\.html$/i, "/");
+        clean = clean.replace(/\.html$/i, "");
+        clean = clean.replace(/\/+$/, "");
+        return clean === "" ? "/" : clean;
+    }
+
+    var currentPath = normalizePath(location.pathname);
 
     document.querySelectorAll("[data-nav-link]").forEach(function (link) {
-        var href = link.getAttribute("href") || "";
+        var href = normalizePath(link.getAttribute("href") || "");
 
-        var normalizedHref = href.replace(/\/+$/, "") || "/";
-
-        if (normalizedHref === path) {
+        if (href === currentPath) {
             link.classList.add("active");
+            link.setAttribute("aria-current", "page");
         }
     });
 
@@ -142,7 +163,11 @@
 
     var reveals = document.querySelectorAll(".reveal");
 
-    if ("IntersectionObserver" in window) {
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+        reveals.forEach(function (node) {
+            node.classList.add("is-visible");
+        });
+    } else {
         var observer = new IntersectionObserver(
             function (entries) {
                 entries.forEach(function (entry) {
@@ -160,10 +185,6 @@
         reveals.forEach(function (node) {
             observer.observe(node);
         });
-    } else {
-        reveals.forEach(function (node) {
-            node.classList.add("is-visible");
-        });
     }
 
     // -----------------------------
@@ -176,6 +197,11 @@
         var target = Number(counter.getAttribute("data-counter"));
 
         if (!Number.isFinite(target) || target <= 0) {
+            return;
+        }
+
+        if (prefersReducedMotion) {
+            counter.textContent = target.toLocaleString("en-US");
             return;
         }
 
@@ -219,7 +245,7 @@
 
     var rotator = document.querySelector("[data-rotate]");
 
-    if (rotator) {
+    if (rotator && !prefersReducedMotion) {
         var texts = (rotator.getAttribute("data-rotate") || "")
             .split("|")
             .map(function (x) {
@@ -237,4 +263,107 @@
             }, 2200);
         }
     }
+
+    // -----------------------------
+    // Scroll progress bar
+    // -----------------------------
+
+    var progressFill = document.querySelector("[data-scroll-progress]");
+
+    if (progressFill) {
+        var updateProgress = function () {
+            var doc = document.documentElement;
+            var scrollTop = doc.scrollTop || document.body.scrollTop;
+            var height = doc.scrollHeight - doc.clientHeight;
+            var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+
+            progressFill.style.width = pct + "%";
+        };
+
+        document.addEventListener("scroll", updateProgress, { passive: true });
+        window.addEventListener("resize", updateProgress);
+        updateProgress();
+    }
+
+    // -----------------------------
+    // Back to top
+    // -----------------------------
+
+    var backToTop = document.querySelector("[data-back-to-top]");
+
+    if (backToTop) {
+        var toggleBackToTop = function () {
+            var doc = document.documentElement;
+            var scrollTop = doc.scrollTop || document.body.scrollTop;
+
+            backToTop.classList.toggle("is-visible", scrollTop > 480);
+        };
+
+        document.addEventListener("scroll", toggleBackToTop, { passive: true });
+        toggleBackToTop();
+
+        backToTop.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: prefersReducedMotion ? "auto" : "smooth"
+            });
+        });
+    }
+
+    // -----------------------------
+    // Shared toast + clipboard helper
+    // Exposed on window so commands.js (and any future page script)
+    // can surface consistent "Copied" feedback without duplicating
+    // the toast markup/logic per page.
+    // -----------------------------
+
+    var toastStack = document.querySelector("[data-toast-stack]");
+
+    function showToast(message) {
+        if (!toastStack) return;
+
+        var el = document.createElement("div");
+        el.className = "toast";
+        el.setAttribute("role", "status");
+        el.textContent = message;
+        toastStack.appendChild(el);
+
+        requestAnimationFrame(function () {
+            el.classList.add("is-visible");
+        });
+
+        setTimeout(function () {
+            el.classList.remove("is-visible");
+            setTimeout(function () {
+                el.remove();
+            }, 250);
+        }, 1800);
+    }
+
+    function copyText(text) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            return navigator.clipboard.writeText(text);
+        }
+
+        return new Promise(function (resolve, reject) {
+            try {
+                var temp = document.createElement("textarea");
+                temp.value = text;
+                temp.style.position = "fixed";
+                temp.style.opacity = "0";
+                document.body.appendChild(temp);
+                temp.select();
+                document.execCommand("copy");
+                document.body.removeChild(temp);
+                resolve();
+            } catch (err) {
+                reject(err);
+            }
+        });
+    }
+
+    window.Eleone = window.Eleone || {};
+    window.Eleone.toast = showToast;
+    window.Eleone.copyText = copyText;
+    window.Eleone.prefersReducedMotion = prefersReducedMotion;
 })();

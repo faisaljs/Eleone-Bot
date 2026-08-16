@@ -4,8 +4,32 @@
 
 .command-controls {
   display: grid;
-  grid-template-columns: 1.2fr 1fr auto;
+  grid-template-columns: 1.2fr 1fr auto auto;
   gap: 0.7rem;
+}
+
+.search-field {
+  position: relative;
+}
+
+.search-field input {
+  padding-right: 2.6rem;
+}
+
+.search-field .search-icon {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-faint);
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+}
+
+.search-field .search-icon svg {
+  width: 17px;
+  height: 17px;
 }
 
 .command-controls input,
@@ -29,9 +53,24 @@
 }
 
 .command-controls .premium-toggle.active {
-  border-color: rgba(11, 136, 255, 0.35);
-  background: #eaf3ff;
-  color: #0f64c2;
+  border-color: rgba(245, 185, 66, 0.55);
+  background: rgba(245, 185, 66, 0.16);
+  color: #8a5a00;
+}
+
+.command-controls .reset-btn {
+  padding: 0.72rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--text-soft);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.command-controls .reset-btn:hover {
+  color: var(--text);
+  border-color: var(--line-strong);
 }
 
 .category-chips {
@@ -54,7 +93,7 @@
 .category-chips button.active {
   color: #fff;
   border-color: transparent;
-  background: linear-gradient(120deg, #0b88ff, #10b981);
+  background: var(--aurora);
 }
 
 .command-meta {
@@ -84,6 +123,13 @@
   align-items: center;
 }
 
+.command-tier-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
 .command-name {
   font-family: "Space Grotesk", "Sora", sans-serif;
   font-size: 1.04rem;
@@ -99,13 +145,13 @@
 }
 
 .command-tier.free {
-  background: #ecfdf5;
+  background: rgba(20, 184, 166, 0.16);
   color: #0f8f63;
 }
 
 .command-tier.premium {
-  background: #fff4e5;
-  color: #c46a00;
+  background: rgba(245, 185, 66, 0.2);
+  color: #8a5a00;
 }
 
 .command-desc {
@@ -132,18 +178,104 @@
   overflow-wrap: anywhere;
 }
 
-.command-usage {
+.command-usage-row {
   margin-top: 0.55rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.command-usage {
+  flex: 1;
+  min-width: 0;
   max-width: 100%;
   white-space: normal;
   display: block;
+  font-family: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
   border: 1px solid var(--line);
   border-radius: 9px;
   background: var(--surface-2);
-  padding: 0.3rem 0.5rem;
+  padding: 0.4rem 0.55rem;
   font-size: 0.78rem;
   color: var(--text-soft);
   overflow-wrap: anywhere;
+}
+
+.command-copy {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface);
+  color: var(--text-soft);
+  cursor: pointer;
+}
+
+.command-copy:hover {
+  color: var(--text);
+  border-color: var(--line-strong);
+}
+
+.command-copy svg {
+  width: 15px;
+  height: 15px;
+}
+
+.command-empty {
+  text-align: center;
+  padding: 2.4rem 1rem;
+}
+
+.command-empty svg {
+  width: 34px;
+  height: 34px;
+  color: var(--text-faint);
+  margin: 0 auto 0.6rem;
+}
+
+.command-skeleton {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface);
+  padding: 0.9rem;
+  overflow: hidden;
+}
+
+.skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--surface-2) 25%, var(--line-strong) 50%, var(--surface-2) 75%);
+  background-size: 200% 100%;
+  animation: skeletonShine 1.3s ease-in-out infinite;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton-line.w-40 {
+  width: 40%;
+}
+.skeleton-line.w-90 {
+  width: 90%;
+}
+.skeleton-line.w-60 {
+  width: 60%;
+}
+
+@keyframes skeletonShine {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-line {
+    animation: none;
+  }
 }
 
 .command-paging {
@@ -174,6 +306,12 @@
   cursor: not-allowed;
 }
 
+@media (max-width: 1100px) {
+  .command-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 900px) {
   .command-controls {
     grid-template-columns: 1fr;
@@ -181,19 +319,19 @@
 }
 
 html[data-theme="dark"] .command-controls .premium-toggle.active {
-  border-color: rgba(11, 136, 255, 0.55);
-  background: rgba(11, 136, 255, 0.18);
-  color: #b9d6ff;
+  border-color: rgba(245, 185, 66, 0.5);
+  background: rgba(245, 185, 66, 0.16);
+  color: #ffd98f;
 }
 
 html[data-theme="dark"] .command-tier.free {
-  background: rgba(16, 185, 129, 0.18);
+  background: rgba(20, 184, 166, 0.2);
   color: #74e7ba;
 }
 
 html[data-theme="dark"] .command-tier.premium {
-  background: rgba(249, 115, 22, 0.2);
-  color: #ffd0a8;
+  background: rgba(245, 185, 66, 0.2);
+  color: #ffd98f;
 }
 
 @media (max-width: 640px) {
@@ -208,6 +346,11 @@ html[data-theme="dark"] .command-tier.premium {
 
   .command-tier {
     margin-top: 0.25rem;
+  }
+
+  .command-copy {
+    width: 38px;
+    height: 38px;
   }
 
   .command-paging {

@@ -2,7 +2,7 @@
   "bot": {
     "name": "Eleone",
     "defaultPrefix": ".",
-    "totalCommands": 45
+    "totalCommands": 47
   },
   "categories": [
     { "id": "music", "label": "Music", "group": "Main" },
@@ -59,7 +59,7 @@
     { "name": "playlist export", "category": "playlists", "tier": "premium", "usage": ".playlist export [user|shared] <name>", "aliases": [], "description": "Export playlist as JSON file." },
     { "name": "playlist share", "category": "playlists", "tier": "premium", "usage": ".playlist share [user|shared] <name>", "aliases": [], "description": "Generate shareable playlist ID." },
     { "name": "playlist import", "category": "playlists", "tier": "premium", "usage": ".playlist import [user|shared] <name> <playlistId|json|url>", "aliases": [], "description": "Import playlist data from ID/JSON/link." },
-    { "name": "playlist autosync", "category": "playlists", "tier": "premium", "usage": ".playlist autosync <on|off> [playlistName>", "aliases": [], "description": "Auto-sync played songs into playlist." },
+    { "name": "playlist autosync", "category": "playlists", "tier": "premium", "usage": ".playlist autosync <on|off> [playlistName]", "aliases": [], "description": "Auto-sync played songs into playlist." },
     { "name": "playlist autoload", "category": "playlists", "tier": "premium", "usage": ".playlist autoload <name|off>", "aliases": ["playlist default"], "description": "Auto load playlist when joining VC." },
 
     { "name": "vote", "category": "premium", "tier": "free", "usage": ".vote", "aliases": ["votecheck"], "description": "Sync top.gg vote premium (12h validity)." },
