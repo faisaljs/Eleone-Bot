@@ -202,37 +202,37 @@ function formatCommandDetail(command, prefix, number) {
     };
 }
 
+function buildHelpBanner() {
+    const bannerUrl = process.env.HELP_BANNER_URL?.trim();
+
+    if (!bannerUrl) return null;
+
+    return {
+        type: 12,
+        items: [
+            {
+                type: 13,
+                media: {
+                    url: bannerUrl
+                }
+            }
+        ]
+    };
+}
+
 function buildHomePayload({ bot, prefix, token, selectedBy }) {
     const totalCommands = getLiveTotalCommands(bot);
     const avatarUrl = bot.client.user?.displayAvatarURL?.({ extension: "png", size: 1024 }) || null;
+    const banner = buildHelpBanner();
 
     const children = [
         { type: 10, content: "## Eleone Help" },
         { type: 14, divider: true, spacing: 1 },
-        {
-            type: 9,
-            components: [
-                {
-                    type: 10,
-                    content: "**Eleone** is a fast music bot with Lavalink playback, premium music cards, realtime filters, queue controls, and per-guild prefix/no-prefix systems."
-                }
-            ],
-            ...(avatarUrl
-                ? {
-                    accessory: {
-                        type: 11,
-                        media: { url: avatarUrl }
-                    }
-                }
-                : {})
-        },
+        ...(banner ? [banner] : []),
         { type: 14, divider: true, spacing: 1 },
-        { type: 10, content: `**Prefix:** \`${prefix}\`\n**Total Commands:** ${totalCommands}` },
+        { type: 10, content: `-# **Prefix:** \`${prefix}\` | **Mention:** <@${bot.client.user.id}>` },
+        { type: 10, content: "> Select category from **Main** or **Side** dropdown to view commands." },
         { type: 14, divider: true, spacing: 1 },
-        { type: 10, content: `**${CATEGORY_GROUPS.main.label}**\n${renderCategoryList("main")}` },
-        { type: 10, content: `**${CATEGORY_GROUPS.side.label}**\n${renderCategoryList("side")}` },
-        { type: 14, divider: true, spacing: 1 },
-        { type: 10, content: "Select category from Main or Side dropdown to view commands." },
         {
             type: 1,
             components: [
@@ -254,8 +254,7 @@ function buildHomePayload({ bot, prefix, token, selectedBy }) {
                     options: listCategoryOptions("side")
                 }
             ]
-        },
-        { type: 10, content: `Panel owner: <@${selectedBy}>` }
+        }
     ];
 
     return {
@@ -344,8 +343,6 @@ function buildCategoryPayload({ bot, prefix, categoryKey, page, token, selectedB
             }
         ]
     });
-
-    children.push({ type: 10, content: `Panel owner: <@${selectedBy}>` });
 
     return {
         flags: COMPONENTS_V2_FLAG,
