@@ -2,7 +2,7 @@
 
 Production-grade prefix-based Discord music bot with Lavalink + Shoukaku, Supabase-backed settings, Spotify integration, premium systems, playlists/favorites, AFK/general utilities, and Components V2 UI.
 
-[![Discord](https://invidget.switchblade.xyz/TGF3fCXtRm)](https://discord.gg/TGF3fCXtRm)
+[![Banner](assets/eleonebnr.png)](https://discord.gg/TGF3fCXtRm)
 
 ## Highlights
 
