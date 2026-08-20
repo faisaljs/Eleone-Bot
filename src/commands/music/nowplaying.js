@@ -1,5 +1,6 @@
 const { MessageFlags } = require("discord.js");
 const { formatDuration } = require("../../utils/format");
+const { emoji } = require("../../config/emoji");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 
@@ -24,7 +25,7 @@ module.exports = {
           {
             type: 17,
             components: [
-              { type: 10, content: "## Nothing Playing" },
+              { type: 10, content: `## ${emoji.music} Nothing Playing` },
               { type: 14, divider: true, spacing: 1 },
               { type: 10, content: "No active track." },
             ],
@@ -56,7 +57,7 @@ module.exports = {
     ].join("\n");
 
     const components = [
-      { type: 10, content: "## Now Playing" },
+      { type: 10, content: `## ${emoji.music} Now Playing` },
       { type: 14, divider: true, spacing: 1 },
       {
         type: 9,

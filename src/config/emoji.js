@@ -34,6 +34,14 @@ const emoji = {
   stop: "<:icons8stop48:1539948303532163124>",
   skip: "<:icons8skip48:1539948051374931969>",
   loop: "<:icons8loop48:1539948194077736990>",
+  avatar: "<:icons8avatar48:1539983097859153930>",
+  banner: "<:icons8banner48:1539983796047323236>",
+  member: "<:icons8user48:1539950170370736128>",
+  members: "<:icons8users48:1539950368748867675>",
+  online: "🟢",
+  dnd: "⛔",
+  idle: "🌙",
+  offline: "⚫",
 
   get(name, fallback = "") {
     return this[name] || fallback;

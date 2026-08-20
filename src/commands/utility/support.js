@@ -10,9 +10,9 @@ module.exports = {
     const serverUrl =
       process.env.NO_PREFIX_CONTACT_DISCORD_URL ||
       "https://discord.gg/TGF3fCXtRm";
-    const instaUrl =
-      process.env.NO_PREFIX_CONTACT_INSTAGRAM_URL ||
-      "https://www.instagram.com/alexzzpy";
+    const githubUrl =
+      process.env.NO_PREFIX_CONTACT_GITHUB_URL ||
+      "https://github.com/faisalg1t";
     const dmUrl = bot.config?.noPrefix?.ownerId
       ? `https://discord.com/users/${bot.config.noPrefix.ownerId}`
       : serverUrl;
@@ -34,7 +34,7 @@ module.exports = {
           },
           {
             label: "Github",
-            url: instaUrl,
+            url: githubUrl,
             emoji: emoji.github,
           },
           {

@@ -1,4 +1,5 @@
 const { MessageFlags } = require("discord.js");
+const { emoji } = require("../../config/emoji");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 
@@ -56,7 +57,7 @@ module.exports = {
           {
             type: 17,
             components: [
-              { type: 10, content: "## Avatar Viewer" },
+              { type: 10, content: `## ${emoji.avatar} Avatar Viewer` },
               { type: 14, divider: true, spacing: 1 },
               { type: 10, content: `**${target.username}**\nID: ${target.id}` },
               ...fields.map((f) => ({

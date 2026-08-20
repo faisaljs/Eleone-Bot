@@ -10,6 +10,7 @@ const {
   getEffectiveAfk,
 } = require("../../database/afk");
 const { enableAfk, disableAfk } = require("../../general/afkService");
+const { emoji } = require("../../config/emoji");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 const PANEL_TTL_MS = 10 * 60 * 1000;
@@ -304,7 +305,7 @@ module.exports = {
             {
               type: 17,
               components: [
-                { type: 10, content: "## AFK Panel Expired" },
+                { type: 10, content: `## ${emoji.expire} AFK Panel Expired` },
                 { type: 14, divider: true, spacing: 1 },
                 { type: 10, content: "Run afk command again." },
               ],

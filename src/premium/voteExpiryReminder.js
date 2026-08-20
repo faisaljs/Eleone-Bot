@@ -4,6 +4,7 @@ const {
   listExpiredVoteUsersForNotify,
   markVoteExpiryNotified,
 } = require("../commands/premium/profile");
+const { emoji } = require("../config/emoji");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 const CHECK_INTERVAL_MS = Math.max(
@@ -25,7 +26,7 @@ function buildExpiryDm(bot, voteUntil) {
       {
         type: 17,
         components: [
-          { type: 10, content: "## Vote Premium Expired" },
+          { type: 10, content: `## ${emoji.expire} Vote Premium Expired` },
           { type: 14, divider: true, spacing: 1 },
           {
             type: 10,

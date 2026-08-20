@@ -4,6 +4,7 @@ const {
   getExpiredActiveNoPrefixUsers,
   markExpiredNoPrefixUser,
 } = require("../database/noPrefix");
+const { emoji } = require("../config/emoji");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 
@@ -63,7 +64,7 @@ function buildExpiryContactPayload(bot, mentionText) {
       {
         type: 17,
         components: [
-          { type: 10, content: "## No Prefix Expired" },
+          { type: 10, content: `## ${emoji.expire} No Prefix Expired` },
           { type: 14, divider: true, spacing: 1 },
           {
             type: 10,

@@ -144,8 +144,8 @@ function renderPage({ bot, token, pageIndex, ownerId }) {
     ? `https://discord.com/users/${process.env.BOT_OWNER_ID}`
     : process.env.DEVELOPER_DISCORD_URL ||
       "https://discord.com/users/1148264513343336560";
-  const ownerInstaUrl =
-    process.env.DEVELOPER_INSTAGRAM_URL || "https://www.instagram.com/alexzzpy";
+  const ownerGithubUrl =
+    process.env.DEVELOPER_GITHUB_URL || "https://github.com/faisalg1t";
   const ownerLabel = process.env.DEVELOPER_NAME || "Alex";
 
   const pages = [
@@ -156,7 +156,7 @@ function renderPage({ bot, token, pageIndex, ownerId }) {
     },
     {
       title: `## ${emoji.dev} Developer`,
-      summary: `**Developer:** [${ownerLabel}](${ownerDiscordUrl})\n**Discord Profile:** [Open Profile](${ownerDiscordUrl})\n**Instagram:** [Open Instagram](${ownerInstaUrl})`,
+      summary: `**Developer:** [${ownerLabel}](${ownerDiscordUrl})\n**Discord Profile:** [Open Profile](${ownerDiscordUrl})\n**Github:** [Open Github](${ownerGithubUrl})`,
       detail: `This bot is maintained by **${ownerLabel}**.\nPage **2/3**`,
     },
     {

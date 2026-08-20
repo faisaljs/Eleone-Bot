@@ -1,4 +1,5 @@
 const { MessageFlags } = require("discord.js");
+const { emoji } = require("../../config/emoji");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 const PANEL_TTL_MS = 10 * 60 * 1000;
@@ -87,7 +88,7 @@ function buildPanelPayload({
       {
         type: 17,
         components: [
-          { type: 10, content: "## Banner Viewer" },
+          { type: 10, content: `## ${emoji.banner} Banner Viewer` },
           { type: 14, divider: true, spacing: 1 },
           intro,
           { type: 14, divider: true, spacing: 1 },
@@ -108,7 +109,7 @@ function buildExpiredPayload() {
       {
         type: 17,
         components: [
-          { type: 10, content: "## Banner Panel Expired" },
+          { type: 10, content: `## ${emoji.expire} Banner Panel Expired` },
           { type: 14, divider: true, spacing: 1 },
           { type: 10, content: "Run banner command again." },
         ],
@@ -150,7 +151,7 @@ function buildResultPayload({
       };
 
   const children = [
-    { type: 10, content: "## Banner Viewer" },
+    { type: 10, content: `## ${emoji.banner} Banner Viewer` },
     { type: 14, divider: true, spacing: 1 },
     intro,
     { type: 14, divider: true, spacing: 1 },
@@ -255,7 +256,7 @@ module.exports = {
             {
               type: 17,
               components: [
-                { type: 10, content: "## Banner Viewer" },
+                { type: 10, content: `## ${emoji.banner} Banner Viewer` },
                 { type: 14, divider: true, spacing: 1 },
                 { type: 10, content: "Unable to fetch target user now." },
               ],

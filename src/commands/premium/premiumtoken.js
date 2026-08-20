@@ -1,5 +1,6 @@
 const { MessageFlags } = require("discord.js");
 const { createPremiumToken, TOKEN_PLANS } = require("../../premium/service");
+const { emoji } = require("../../config/emoji");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 const SESSION_TTL_MS = 10 * 60 * 1000;
@@ -101,7 +102,7 @@ module.exports = {
             {
               type: 17,
               components: [
-                { type: 10, content: "## Token Session Expired" },
+                { type: 10, content: `## ${emoji.expire} Token Session Expired` },
                 { type: 14, divider: true, spacing: 1 },
                 { type: 10, content: "Run premiumtoken command again." },
               ],

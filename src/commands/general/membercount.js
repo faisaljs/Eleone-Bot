@@ -1,4 +1,5 @@
 const { MessageFlags, GatewayIntentBits } = require("discord.js");
+const { emoji } = require("../../config/emoji");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 
@@ -77,28 +78,19 @@ module.exports = {
       bot.client.user?.displayAvatarURL?.({ extension: "png", size: 1024 }) ||
       null;
 
-    const totalEmoji = getEmoji("MEMBERCOUNT_EMOJI_TOTAL", "[T]");
-    const humanEmoji = getEmoji("MEMBERCOUNT_EMOJI_HUMAN", "[H]");
-    const botEmoji = getEmoji("MEMBERCOUNT_EMOJI_BOT", "[B]");
-
-    const onlineEmoji = getEmoji("MEMBERCOUNT_EMOJI_ONLINE", "[ON]");
-    const dndEmoji = getEmoji("MEMBERCOUNT_EMOJI_DND", "[DND]");
-    const idleEmoji = getEmoji("MEMBERCOUNT_EMOJI_IDLE", "[IDLE]");
-    const offlineEmoji = getEmoji("MEMBERCOUNT_EMOJI_OFFLINE", "[OFF]");
-
     const countStatsText = [
       "**Count Stats**",
-      "| " + buildLine(totalEmoji, "Total Members", totalMembers),
-      "| " + buildLine(humanEmoji, "Total Humans", totalHumans),
-      "| " + buildLine(botEmoji, "Total Bots", totalBots),
+      "| " + buildLine(`${emoji.members}`, "Total Members", totalMembers),
+      "| " + buildLine(`${emoji.member}`, "Total Humans", totalHumans),
+      "| " + buildLine(`${emoji.bot}`, "Total Bots", totalBots),
     ].join("\n");
 
     const presenceStatsText = [
       "**Presence Stats**",
-      "| " + buildLine(onlineEmoji, "Online", presence.online),
-      "| " + buildLine(dndEmoji, "DND", presence.dnd),
-      "| " + buildLine(idleEmoji, "Idle", presence.idle),
-      "| " + buildLine(offlineEmoji, "Offline", presence.offline),
+      "| " + buildLine(`${emoji.online}`, "Online", presence.online),
+      "| " + buildLine(`${emoji.dnd}`, "DND", presence.dnd),
+      "| " + buildLine(`${emoji.idle}`, "Idle", presence.idle),
+      "| " + buildLine(`${emoji.offline}`, "Offline", presence.offline),
     ].join("\n");
 
     const warning = livePresence
@@ -133,7 +125,7 @@ module.exports = {
         {
           type: 17,
           components: [
-            { type: 10, content: "## Member Statistics" },
+            { type: 10, content: `## ${emoji.stats} Member Statistics` },
             { type: 14, divider: true, spacing: 1 },
             headerBlock,
             { type: 14, divider: true, spacing: 1 },

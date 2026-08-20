@@ -503,7 +503,7 @@ function buildHomePayload({ bot, prefix, token, selectedBy }) {
   const banner = buildHelpBanner();
 
   const children = [
-    { type: 10, content: "## Eleone Help" },
+    { type: 10, content: `## ${emoji.bot} Eleone Help` },
     { type: 14, divider: true, spacing: 1 },
     ...(banner ? [banner] : []),
     { type: 14, divider: true, spacing: 1 },
@@ -564,7 +564,7 @@ function buildCategoryPayload({
   const pageItems = entries.slice(start, start + COMMANDS_PER_PAGE);
 
   const children = [
-    { type: 10, content: "## Eleone Help" },
+    { type: 10, content: `## ${emoji.bot} Eleone Help` },
     { type: 14, divider: true, spacing: 1 },
     {
       type: 10,
@@ -667,7 +667,7 @@ function buildExpiredPayload() {
       {
         type: 17,
         components: [
-          { type: 10, content: "## Help Panel Expired" },
+          { type: 10, content: `## ${emoji.expire} Help Panel Expired` },
           { type: 14, divider: true, spacing: 1 },
           { type: 10, content: "Run help command again." },
         ],
