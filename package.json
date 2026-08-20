@@ -18,5 +18,8 @@
     "musicard": "^3.0.1",
     "shoukaku": "^4.1.0",
     "ws": "^8.15.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.9.6"
   }
 }

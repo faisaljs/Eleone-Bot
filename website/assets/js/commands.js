@@ -22,11 +22,13 @@
     query: "",
     premiumOnly: false,
     page: 1,
-    pageSize: 10
+    pageSize: 10,
   };
 
   function tierClass(value) {
-    return String(value || "free").toLowerCase() === "premium" ? "premium" : "free";
+    return String(value || "free").toLowerCase() === "premium"
+      ? "premium"
+      : "free";
   }
 
   function badgeLabel(value) {
@@ -45,7 +47,7 @@
           "<": "&lt;",
           ">": "&gt;",
           '"': "&quot;",
-          "'": "&#39;"
+          "'": "&#39;",
         }[ch] || ch
       );
     });
@@ -85,9 +87,15 @@
     const q = normalize(state.query);
 
     return state.all.filter(function (cmd) {
-      const byCategory = state.category === "all" || cmd.category === state.category;
+      const byCategory =
+        state.category === "all" || cmd.category === state.category;
       const byPremium = !state.premiumOnly || tierClass(cmd.tier) === "premium";
-      const haystack = [cmd.name, cmd.usage, cmd.description, (cmd.aliases || []).join(" ")]
+      const haystack = [
+        cmd.name,
+        cmd.usage,
+        cmd.description,
+        (cmd.aliases || []).join(" "),
+      ]
         .map(normalize)
         .join(" | ");
       const byQuery = !q || haystack.includes(q);
@@ -98,26 +106,38 @@
   function commandHTML(cmd) {
     const aliases =
       cmd.aliases && cmd.aliases.length
-        ? cmd.aliases.map(function (a) { return "<span>" + escapeHtml(a) + "</span>"; }).join("")
-        : '<span>no aliases</span>';
+        ? cmd.aliases
+            .map(function (a) {
+              return "<span>" + escapeHtml(a) + "</span>";
+            })
+            .join("")
+        : "<span>no aliases</span>";
 
     return [
       '<article class="command-card reveal is-visible">',
       '  <div class="command-head">',
       '    <h3 class="command-name">' + escapeHtml(cmd.name) + "</h3>",
       '    <span class="command-tier-wrap">',
-      '      <span class="command-tier ' + tierClass(cmd.tier) + '">' + badgeLabel(cmd.tier) + "</span>",
+      '      <span class="command-tier ' +
+        tierClass(cmd.tier) +
+        '">' +
+        badgeLabel(cmd.tier) +
+        "</span>",
       "    </span>",
       "  </div>",
       '  <p class="command-desc">' + escapeHtml(cmd.description) + "</p>",
       '  <div class="command-usage-row">',
       '    <code class="command-usage">' + escapeHtml(cmd.usage) + "</code>",
-      '    <button type="button" class="command-copy" data-copy-usage="' + escapeAttr(cmd.usage) + '" aria-label="Copy usage for ' + escapeAttr(cmd.name) + '">',
+      '    <button type="button" class="command-copy" data-copy-usage="' +
+        escapeAttr(cmd.usage) +
+        '" aria-label="Copy usage for ' +
+        escapeAttr(cmd.name) +
+        '">',
       '      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>',
       "    </button>",
       "  </div>",
       '  <div class="command-tags">' + aliases + "</div>",
-      "</article>"
+      "</article>",
     ].join("\n");
   }
 
@@ -140,7 +160,7 @@
       '  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path><path d="M8 11h6"></path></svg>',
       '  <p class="command-desc">No commands match those filters.</p>',
       '  <button type="button" class="btn btn-secondary" data-empty-reset style="margin-top:.7rem;">Reset filters</button>',
-      "</div>"
+      "</div>",
     ].join("\n");
   }
 
@@ -252,14 +272,19 @@
     // data (stale link) — fall back to sane defaults instead of
     // silently rendering an empty page.
     const validCategory =
-      state.category === "all" || state.categories.some(function (c) { return c.id === state.category; });
+      state.category === "all" ||
+      state.categories.some(function (c) {
+        return c.id === state.category;
+      });
     if (!validCategory) state.category = "all";
 
     fillCategorySelect();
     searchInput.value = state.query;
     premiumToggle.classList.toggle("active", state.premiumOnly);
     premiumToggle.setAttribute("aria-pressed", String(state.premiumOnly));
-    premiumToggle.textContent = state.premiumOnly ? "Premium: ON" : "Premium Only";
+    premiumToggle.textContent = state.premiumOnly
+      ? "Premium: ON"
+      : "Premium Only";
 
     render();
 
@@ -283,7 +308,9 @@
       state.premiumOnly = !state.premiumOnly;
       premiumToggle.classList.toggle("active", state.premiumOnly);
       premiumToggle.setAttribute("aria-pressed", String(state.premiumOnly));
-      premiumToggle.textContent = state.premiumOnly ? "Premium: ON" : "Premium Only";
+      premiumToggle.textContent = state.premiumOnly
+        ? "Premium: ON"
+        : "Premium Only";
       state.page = 1;
       render();
     });
@@ -311,11 +338,16 @@
       if (copyBtn) {
         const text = copyBtn.getAttribute("data-copy-usage") || "";
         if (window.Eleone && window.Eleone.copyText) {
-          window.Eleone.copyText(text).then(function () {
-            if (window.Eleone.toast) window.Eleone.toast("Copied: " + text);
-          }).catch(function () {
-            if (window.Eleone.toast) window.Eleone.toast("Couldn't copy — select and copy manually.");
-          });
+          window.Eleone.copyText(text)
+            .then(function () {
+              if (window.Eleone.toast) window.Eleone.toast("Copied: " + text);
+            })
+            .catch(function () {
+              if (window.Eleone.toast)
+                window.Eleone.toast(
+                  "Couldn't copy — select and copy manually.",
+                );
+            });
         }
         return;
       }
@@ -331,7 +363,10 @@
       if (e.key !== "/") return;
       const active = document.activeElement;
       const isTyping =
-        active && (active.tagName === "INPUT" || active.tagName === "TEXTAREA" || active.isContentEditable);
+        active &&
+        (active.tagName === "INPUT" ||
+          active.tagName === "TEXTAREA" ||
+          active.isContentEditable);
       if (isTyping) return;
 
       e.preventDefault();

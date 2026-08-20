@@ -1,183 +1,337 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eleone Bot | Terms of Service</title>
-  <meta name="description" content="The terms that govern use of the Eleone Discord bot, its premium plans, and this website." />
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem("eleone-theme");
-        if (t === "dark" || t === "light") {
-          document.documentElement.setAttribute("data-theme", t);
-          return;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eleone Bot | Terms of Service</title>
+    <meta
+      name="description"
+      content="The terms that govern use of the Eleone Discord bot, its premium plans, and this website."
+    />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("eleone-theme");
+          if (t === "dark" || t === "light") {
+            document.documentElement.setAttribute("data-theme", t);
+            return;
+          }
+          if (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+          ) {
+            document.documentElement.setAttribute("data-theme", "dark");
+          }
+        } catch (e) {
+          // Ignore pre-init errors.
         }
-        if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          document.documentElement.setAttribute("data-theme", "dark");
-        }
-      } catch (e) {
-        // Ignore pre-init errors.
-      }
-    })();
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="stylesheet" href="assets/css/legal.css" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%233b82f6'/%3E%3Cstop offset='52%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%2314b8a6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E" />
-  <meta name="theme-color" content="#eef1fb" />
-  <link rel="canonical" href="https://eleone.vercel.app/terms-of-service" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Eleone Bot" />
-  <meta property="og:title" content="Eleone Bot | Terms of Service" />
-  <meta property="og:description" content="The terms that govern use of the Eleone Discord bot, its premium plans, and this website." />
-  <meta property="og:url" content="https://eleone.vercel.app/terms-of-service" />
-  <meta name="twitter:card" content="summary" />
-</head>
-<body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <div class="scroll-progress"><span data-scroll-progress></span></div>
-  <div class="bg-orb orb-1"></div>
-  <div class="bg-orb orb-2"></div>
-  <div class="bg-orb orb-3"></div>
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/legal.css" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%233b82f6'/%3E%3Cstop offset='52%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%2314b8a6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E"
+    />
+    <meta name="theme-color" content="#eef1fb" />
+    <link rel="canonical" href="https://eleone.vercel.app/terms-of-service" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Eleone Bot" />
+    <meta property="og:title" content="Eleone Bot | Terms of Service" />
+    <meta
+      property="og:description"
+      content="The terms that govern use of the Eleone Discord bot, its premium plans, and this website."
+    />
+    <meta
+      property="og:url"
+      content="https://eleone.vercel.app/terms-of-service"
+    />
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="scroll-progress"><span data-scroll-progress></span></div>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
 
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a href="/" class="brand">
-        <span class="brand-badge">E</span>
-        <span>Eleone Bot</span>
-      </a>
-      <nav class="nav-links" data-nav-links>
-        <a href="/" data-nav-link>Home</a>
-        <a href="/features" data-nav-link>Features</a>
-        <a href="/commands" data-nav-link>Commands</a>
-        <a href="/premium" data-nav-link>Premium</a>
-        <a href="/contact" data-nav-link>Deploy</a>
-      </nav>
-      <div class="nav-cta">
-        <a class="btn btn-secondary" href="/premium">Premium Plans</a>
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme"><span data-theme-label>Dark Mode</span></button>
-        <button class="mobile-toggle" data-nav-toggle aria-expanded="false" aria-label="Toggle navigation">Menu</button>
-      </div>
-    </div>
-  </header>
-
-  <main id="main-content" tabindex="-1">
-    <div class="container">
-      <section class="section reveal">
-        <p class="eyebrow">Legal</p>
-        <h1 class="h-title">Terms of Service</h1>
-        <p class="h-desc">The ground rules for using Eleone — in Discord, on premium plans, and on this website.</p>
-        <p class="chip legal-updated">Last updated: <strong>15 August 2026</strong></p>
-      </section>
-
-      <section class="section">
-        <div class="legal-layout">
-          <aside class="card legal-toc reveal">
-            <h2>On this page</h2>
-            <ol>
-              <li><a href="#acceptance">Acceptance of terms</a></li>
-              <li><a href="#eligibility">Eligibility</a></li>
-              <li><a href="#using-eleone">Using Eleone</a></li>
-              <li><a href="#acceptable-use">Acceptable use</a></li>
-              <li><a href="#premium">Premium plans &amp; payments</a></li>
-              <li><a href="#availability">Availability &amp; changes</a></li>
-              <li><a href="#liability">Disclaimers &amp; liability</a></li>
-              <li><a href="#termination">Termination</a></li>
-              <li><a href="#law">Governing law</a></li>
-              <li><a href="#contact-us">Contact us</a></li>
-            </ol>
-          </aside>
-
-          <article class="card legal-card reveal">
-            <div class="legal-placeholder">This is a starting template, not legal advice. Replace the bracketed placeholders (entity name, jurisdiction, contact address) with your real details, and have it reviewed before you publish it.</div>
-
-            <section id="acceptance">
-              <h2>1. Acceptance of terms</h2>
-              <p>By inviting Eleone to a Discord server, running its commands, or using this website, you agree to these Terms of Service and to our <a href="/privacy-policy">Privacy Policy</a>. If you don't agree, please don't use the bot or website.</p>
-            </section>
-
-            <section id="eligibility">
-              <h2>2. Eligibility</h2>
-              <p>You must meet Discord's own minimum age and account requirements, and comply with <a href="https://discord.com/terms" target="_blank" rel="noopener noreferrer">Discord's Terms of Service</a> and <a href="https://discord.com/guidelines" target="_blank" rel="noopener noreferrer">Community Guidelines</a> while using Eleone. Server admins are responsible for confirming the bot's use fits their community's own rules.</p>
-            </section>
-
-            <section id="using-eleone">
-              <h2>3. Using Eleone</h2>
-              <p>Eleone is provided as a music and utility bot for Discord servers, along with this informational website. We grant you a non-exclusive, non-transferable, revocable license to use the bot and site for their intended purpose. You may not reverse-engineer, resell access to, or rehost the bot as your own product without permission, where the underlying project's own license (see the linked <a href="https://github.com/faisalg1t/Eleone#readme" target="_blank" rel="noopener noreferrer">repository</a>) allows.</p>
-            </section>
-
-            <section id="acceptable-use">
-              <h2>4. Acceptable use</h2>
-              <p>When using Eleone, you agree not to:</p>
-              <ul>
-                <li>Use the bot to stream, queue, or distribute content you don't have the rights to share.</li>
-                <li>Attempt to overload, spam, or exploit the bot's commands, filters, or voice connections.</li>
-                <li>Circumvent premium checks, forge vote records, or share/redeem tokens you weren't issued.</li>
-                <li>Use no-prefix, owner, or admin-tier commands without the authorization those tiers require.</li>
-                <li>Use the bot for any purpose that violates applicable law or Discord's own policies.</li>
-              </ul>
-            </section>
-
-            <section id="premium">
-              <h2>5. Premium plans &amp; payments</h2>
-              <p>Eleone offers a free vote-premium tier (12-hour access via a top.gg vote) and a paid guild premium tier, redeemed through owner-issued tokens as described on the <a href="/premium">Premium Systems</a> page. Prices shown there are suggested pricing in INR and may change. Unless stated otherwise at time of purchase, paid plans are non-refundable once a token has been redeemed and premium access has activated on a guild, except where required by law.</p>
-            </section>
-
-            <section id="availability">
-              <h2>6. Availability &amp; changes</h2>
-              <p>Eleone depends on third-party infrastructure (Discord, Lavalink nodes, Spotify's API) that can experience downtime outside our control. We may add, change, or remove commands and features, and may update these terms; material changes will update the "Last updated" date above.</p>
-            </section>
-
-            <section id="liability">
-              <h2>7. Disclaimers &amp; liability</h2>
-              <p>Eleone is provided "as is," without warranties of any kind, express or implied, including fitness for a particular purpose or uninterrupted availability. To the fullest extent permitted by law, we are not liable for indirect, incidental, or consequential damages arising from your use of the bot or website, including lost data, lost premium time due to outages, or service interruptions.</p>
-            </section>
-
-            <section id="termination">
-              <h2>8. Termination</h2>
-              <p>We may suspend or remove Eleone's access to a server, or restrict a user's access to specific commands, if these terms or Discord's own policies are violated. You can remove the bot from your server, or stop using it, at any time.</p>
-            </section>
-
-            <section id="law">
-              <h2>9. Governing law</h2>
-              <p>These terms are governed by the laws of <code>[your jurisdiction]</code>, without regard to conflict-of-law principles. Replace this placeholder with the jurisdiction that actually applies to your deployment before publishing.</p>
-            </section>
-
-            <section id="contact-us">
-              <h2>10. Contact us</h2>
-              <p>Questions about these terms can go through the <a href="/contact">support links on the Deploy &amp; Support page</a>, or <code>[eleonehub@gmail.com]</code>.</p>
-            </section>
-          </article>
-        </div>
-      </section>
-    </div>
-  </main>
-
-  <footer>
-    <div class="container footer-panel">
-      <div class="footer-row">
-        <span>Eleone Bot Web | <span data-year></span></span>
-        <div class="footer-links">
-          <a href="/">Home</a>
-          <a href="/features">Features</a>
-          <a href="/commands">Commands</a>
-          <a href="/premium">Premium</a>
-          <a href="/contact">Deploy</a>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="/" class="brand">
+          <span class="brand-badge">E</span>
+          <span>Eleone Bot</span>
+        </a>
+        <nav class="nav-links" data-nav-links>
+          <a href="/" data-nav-link>Home</a>
+          <a href="/features" data-nav-link>Features</a>
+          <a href="/commands" data-nav-link>Commands</a>
+          <a href="/premium" data-nav-link>Premium</a>
+          <a href="/contact" data-nav-link>Deploy</a>
+        </nav>
+        <div class="nav-cta">
+          <a class="btn btn-secondary" href="/premium">Premium Plans</a>
+          <button
+            class="theme-toggle"
+            type="button"
+            data-theme-toggle
+            aria-label="Toggle color theme"
+          >
+            <span data-theme-label>Dark Mode</span>
+          </button>
+          <button
+            class="mobile-toggle"
+            data-nav-toggle
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            Menu
+          </button>
         </div>
       </div>
-      <div class="footer-legal">
-        <a href="/privacy-policy">Privacy Policy</a>
-        <a href="/terms-of-service">Terms of Service</a>
+    </header>
+
+    <main id="main-content" tabindex="-1">
+      <div class="container">
+        <section class="section reveal">
+          <p class="eyebrow">Legal</p>
+          <h1 class="h-title">Terms of Service</h1>
+          <p class="h-desc">
+            The ground rules for using Eleone — in Discord, on premium plans,
+            and on this website.
+          </p>
+          <p class="chip legal-updated">
+            Last updated: <strong>15 August 2026</strong>
+          </p>
+        </section>
+
+        <section class="section">
+          <div class="legal-layout">
+            <aside class="card legal-toc reveal">
+              <h2>On this page</h2>
+              <ol>
+                <li><a href="#acceptance">Acceptance of terms</a></li>
+                <li><a href="#eligibility">Eligibility</a></li>
+                <li><a href="#using-eleone">Using Eleone</a></li>
+                <li><a href="#acceptable-use">Acceptable use</a></li>
+                <li><a href="#premium">Premium plans &amp; payments</a></li>
+                <li><a href="#availability">Availability &amp; changes</a></li>
+                <li><a href="#liability">Disclaimers &amp; liability</a></li>
+                <li><a href="#termination">Termination</a></li>
+                <li><a href="#law">Governing law</a></li>
+                <li><a href="#contact-us">Contact us</a></li>
+              </ol>
+            </aside>
+
+            <article class="card legal-card reveal">
+              <div class="legal-placeholder">
+                This is a starting template, not legal advice. Replace the
+                bracketed placeholders (entity name, jurisdiction, contact
+                address) with your real details, and have it reviewed before you
+                publish it.
+              </div>
+
+              <section id="acceptance">
+                <h2>1. Acceptance of terms</h2>
+                <p>
+                  By inviting Eleone to a Discord server, running its commands,
+                  or using this website, you agree to these Terms of Service and
+                  to our <a href="/privacy-policy">Privacy Policy</a>. If you
+                  don't agree, please don't use the bot or website.
+                </p>
+              </section>
+
+              <section id="eligibility">
+                <h2>2. Eligibility</h2>
+                <p>
+                  You must meet Discord's own minimum age and account
+                  requirements, and comply with
+                  <a
+                    href="https://discord.com/terms"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Discord's Terms of Service</a
+                  >
+                  and
+                  <a
+                    href="https://discord.com/guidelines"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Community Guidelines</a
+                  >
+                  while using Eleone. Server admins are responsible for
+                  confirming the bot's use fits their community's own rules.
+                </p>
+              </section>
+
+              <section id="using-eleone">
+                <h2>3. Using Eleone</h2>
+                <p>
+                  Eleone is provided as a music and utility bot for Discord
+                  servers, along with this informational website. We grant you a
+                  non-exclusive, non-transferable, revocable license to use the
+                  bot and site for their intended purpose. You may not
+                  reverse-engineer, resell access to, or rehost the bot as your
+                  own product without permission, where the underlying project's
+                  own license (see the linked
+                  <a
+                    href="https://github.com/faisalg1t/Eleone#readme"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >repository</a
+                  >) allows.
+                </p>
+              </section>
+
+              <section id="acceptable-use">
+                <h2>4. Acceptable use</h2>
+                <p>When using Eleone, you agree not to:</p>
+                <ul>
+                  <li>
+                    Use the bot to stream, queue, or distribute content you
+                    don't have the rights to share.
+                  </li>
+                  <li>
+                    Attempt to overload, spam, or exploit the bot's commands,
+                    filters, or voice connections.
+                  </li>
+                  <li>
+                    Circumvent premium checks, forge vote records, or
+                    share/redeem tokens you weren't issued.
+                  </li>
+                  <li>
+                    Use no-prefix, owner, or admin-tier commands without the
+                    authorization those tiers require.
+                  </li>
+                  <li>
+                    Use the bot for any purpose that violates applicable law or
+                    Discord's own policies.
+                  </li>
+                </ul>
+              </section>
+
+              <section id="premium">
+                <h2>5. Premium plans &amp; payments</h2>
+                <p>
+                  Eleone offers a free vote-premium tier (12-hour access via a
+                  top.gg vote) and a paid guild premium tier, redeemed through
+                  owner-issued tokens as described on the
+                  <a href="/premium">Premium Systems</a> page. Prices shown
+                  there are suggested pricing in INR and may change. Unless
+                  stated otherwise at time of purchase, paid plans are
+                  non-refundable once a token has been redeemed and premium
+                  access has activated on a guild, except where required by law.
+                </p>
+              </section>
+
+              <section id="availability">
+                <h2>6. Availability &amp; changes</h2>
+                <p>
+                  Eleone depends on third-party infrastructure (Discord,
+                  Lavalink nodes, Spotify's API) that can experience downtime
+                  outside our control. We may add, change, or remove commands
+                  and features, and may update these terms; material changes
+                  will update the "Last updated" date above.
+                </p>
+              </section>
+
+              <section id="liability">
+                <h2>7. Disclaimers &amp; liability</h2>
+                <p>
+                  Eleone is provided "as is," without warranties of any kind,
+                  express or implied, including fitness for a particular purpose
+                  or uninterrupted availability. To the fullest extent permitted
+                  by law, we are not liable for indirect, incidental, or
+                  consequential damages arising from your use of the bot or
+                  website, including lost data, lost premium time due to
+                  outages, or service interruptions.
+                </p>
+              </section>
+
+              <section id="termination">
+                <h2>8. Termination</h2>
+                <p>
+                  We may suspend or remove Eleone's access to a server, or
+                  restrict a user's access to specific commands, if these terms
+                  or Discord's own policies are violated. You can remove the bot
+                  from your server, or stop using it, at any time.
+                </p>
+              </section>
+
+              <section id="law">
+                <h2>9. Governing law</h2>
+                <p>
+                  These terms are governed by the laws of
+                  <code>[your jurisdiction]</code>, without regard to
+                  conflict-of-law principles. Replace this placeholder with the
+                  jurisdiction that actually applies to your deployment before
+                  publishing.
+                </p>
+              </section>
+
+              <section id="contact-us">
+                <h2>10. Contact us</h2>
+                <p>
+                  Questions about these terms can go through the
+                  <a href="/contact"
+                    >support links on the Deploy &amp; Support page</a
+                  >, or <code>[eleonehub@gmail.com]</code>.
+                </p>
+              </section>
+            </article>
+          </div>
+        </section>
       </div>
-    </div>
-  </footer>
+    </main>
 
-  <button type="button" class="back-to-top" data-back-to-top aria-label="Back to top"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"></path><path d="m5 12 7-7 7 7"></path></svg></button>
-  <div class="toast-stack" data-toast-stack aria-live="polite"></div>
+    <footer>
+      <div class="container footer-panel">
+        <div class="footer-row">
+          <span>Eleone Bot Web | <span data-year></span></span>
+          <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/features">Features</a>
+            <a href="/commands">Commands</a>
+            <a href="/premium">Premium</a>
+            <a href="/contact">Deploy</a>
+          </div>
+        </div>
+        <div class="footer-legal">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-of-service">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
 
-  <script src="assets/js/main.js"></script>
-</body>
+    <button
+      type="button"
+      class="back-to-top"
+      data-back-to-top
+      aria-label="Back to top"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 19V5"></path>
+        <path d="m5 12 7-7 7 7"></path>
+      </svg>
+    </button>
+    <div class="toast-stack" data-toast-stack aria-live="polite"></div>
+
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>

@@ -8,13 +8,18 @@
 
 :root {
   /* Aurora accent spectrum */
-  --primary: #3b82f6;      /* azure */
-  --secondary: #14b8a6;    /* teal */
-  --accent: #a855f7;       /* violet */
-  --premium: #f5b942;      /* gold, premium-tier accent */
+  --primary: #3b82f6; /* azure */
+  --secondary: #14b8a6; /* teal */
+  --accent: #a855f7; /* violet */
+  --premium: #f5b942; /* gold, premium-tier accent */
   --danger: #f43f5e;
 
-  --aurora: linear-gradient(115deg, var(--primary) 0%, var(--accent) 52%, var(--secondary) 100%);
+  --aurora: linear-gradient(
+    115deg,
+    var(--primary) 0%,
+    var(--accent) 52%,
+    var(--secondary) 100%
+  );
 
   /* Base canvas (light) */
   --bg: #eef1fb;
@@ -55,11 +60,16 @@
   /* Specular highlight baked into the shadow tokens so it composes
      safely with per-component box-shadow without a pseudo-element
      collision on .card variants that already use ::before. */
-  --shadow-lg: inset 0 1px 0 rgba(255, 255, 255, 0.75), inset 0 0 0 1px rgba(255, 255, 255, 0.35),
+  --shadow-lg:
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.35),
     0 24px 60px rgba(30, 41, 90, 0.16);
-  --shadow-md: inset 0 1px 0 rgba(255, 255, 255, 0.7), inset 0 0 0 1px rgba(255, 255, 255, 0.28),
+  --shadow-md:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.28),
     0 12px 30px rgba(30, 41, 90, 0.12);
-  --shadow-sm: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 6px 16px rgba(30, 41, 90, 0.1);
+  --shadow-sm:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 6px 16px rgba(30, 41, 90, 0.1);
 
   --radius-xl: 28px;
   --radius-lg: 20px;
@@ -100,11 +110,14 @@ html[data-theme="dark"] {
   --orb-2: #7c3aed;
   --orb-3: #0d9488;
 
-  --shadow-lg: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 0 0 1px rgba(255, 255, 255, 0.07),
-    0 28px 64px rgba(0, 0, 0, 0.55);
-  --shadow-md: inset 0 1px 0 rgba(255, 255, 255, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 14px 34px rgba(0, 0, 0, 0.45);
-  --shadow-sm: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 8px 18px rgba(0, 0, 0, 0.4);
+  --shadow-lg:
+    inset 0 1px 0 rgba(255, 255, 255, 0.1),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.07), 0 28px 64px rgba(0, 0, 0, 0.55);
+  --shadow-md:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06), 0 14px 34px rgba(0, 0, 0, 0.45);
+  --shadow-sm:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 8px 18px rgba(0, 0, 0, 0.4);
 
   --focus-ring: 0 0 0 3px rgba(96, 165, 250, 0.55);
 }
@@ -118,9 +131,11 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Sora", "Segoe UI", sans-serif;
-  background: radial-gradient(circle at 12% 8%, var(--bg-grad-1) 0%, transparent 40%),
+  background:
+    radial-gradient(circle at 12% 8%, var(--bg-grad-1) 0%, transparent 40%),
     radial-gradient(circle at 88% 4%, var(--bg-grad-2) 0%, transparent 38%),
-    radial-gradient(circle at 50% 92%, var(--bg-grad-3) 0%, transparent 42%), var(--bg);
+    radial-gradient(circle at 50% 92%, var(--bg-grad-3) 0%, transparent 42%),
+    var(--bg);
   background-attachment: fixed;
   color: var(--text);
   min-height: 100%;
@@ -130,7 +145,9 @@ body {
 body {
   position: relative;
   overflow-x: hidden;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 a {
@@ -410,7 +427,10 @@ main {
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
 .btn:hover {
@@ -472,7 +492,9 @@ main {
 .reveal {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.55s ease, transform 0.55s ease;
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
 }
 
 .reveal.is-visible {
@@ -573,7 +595,9 @@ footer {
   opacity: 0;
   transform: translateY(10px);
   pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
 }
 
 .back-to-top.is-visible {
@@ -606,7 +630,9 @@ footer {
   font-weight: 600;
   opacity: 0;
   transform: translateY(8px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
 .toast.is-visible {

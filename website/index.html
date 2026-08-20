@@ -1,261 +1,460 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eleone Bot | Advanced Discord Music Experience</title>
-  <meta name="description" content="Official Eleone bot website - advanced Discord music bot with Lavalink, Spotify, playlists, premium systems, and modern controls." />
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem("eleone-theme");
-        if (t === "dark" || t === "light") {
-          document.documentElement.setAttribute("data-theme", t);
-          return;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eleone Bot | Advanced Discord Music Experience</title>
+    <meta
+      name="description"
+      content="Official Eleone bot website - advanced Discord music bot with Lavalink, Spotify, playlists, premium systems, and modern controls."
+    />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("eleone-theme");
+          if (t === "dark" || t === "light") {
+            document.documentElement.setAttribute("data-theme", t);
+            return;
+          }
+          if (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+          ) {
+            document.documentElement.setAttribute("data-theme", "dark");
+          }
+        } catch (e) {
+          // Ignore pre-init errors.
         }
-        if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          document.documentElement.setAttribute("data-theme", "dark");
-        }
-      } catch (e) {
-        // Ignore pre-init errors.
-      }
-    })();
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="stylesheet" href="assets/css/home.css" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%233b82f6'/%3E%3Cstop offset='52%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%2314b8a6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E" />
-  <meta name="theme-color" content="#eef1fb" />
-  <link rel="canonical" href="https://eleone.vercel.app/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Eleone Bot" />
-  <meta property="og:title" content="Eleone Bot | Advanced Discord Music Experience" />
-  <meta property="og:description" content="Official Eleone bot website - advanced Discord music bot with Lavalink, Spotify, playlists, premium systems, and modern controls." />
-  <meta property="og:url" content="https://eleone.vercel.app/" />
-  <meta name="twitter:card" content="summary" />
-</head>
-<body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <div class="scroll-progress"><span data-scroll-progress></span></div>
-  <div class="bg-orb orb-1"></div>
-  <div class="bg-orb orb-2"></div>
-  <div class="bg-orb orb-3"></div>
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="assets/css/home.css" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%233b82f6'/%3E%3Cstop offset='52%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%2314b8a6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E"
+    />
+    <meta name="theme-color" content="#eef1fb" />
+    <link rel="canonical" href="https://eleone.vercel.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Eleone Bot" />
+    <meta
+      property="og:title"
+      content="Eleone Bot | Advanced Discord Music Experience"
+    />
+    <meta
+      property="og:description"
+      content="Official Eleone bot website - advanced Discord music bot with Lavalink, Spotify, playlists, premium systems, and modern controls."
+    />
+    <meta property="og:url" content="https://eleone.vercel.app/" />
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="scroll-progress"><span data-scroll-progress></span></div>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
 
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a href="/" class="brand">
-        <span class="brand-badge">E</span>
-        <span>Eleone Bot</span>
-      </a>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="/" class="brand">
+          <span class="brand-badge">E</span>
+          <span>Eleone Bot</span>
+        </a>
 
-      <nav class="nav-links" data-nav-links>
-        <a href="/" data-nav-link>Home</a>
-        <a href="/features" data-nav-link>Features</a>
-        <a href="/commands" data-nav-link>Commands</a>
-        <a href="/premium" data-nav-link>Premium</a>
-        <a href="/contact" data-nav-link>Deploy</a>
-      </nav>
+        <nav class="nav-links" data-nav-links>
+          <a href="/" data-nav-link>Home</a>
+          <a href="/features" data-nav-link>Features</a>
+          <a href="/commands" data-nav-link>Commands</a>
+          <a href="/premium" data-nav-link>Premium</a>
+          <a href="/contact" data-nav-link>Deploy</a>
+        </nav>
 
-      <div class="nav-cta">
-        <a class="btn btn-secondary" href="/commands">Explore Commands</a>
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme"><span data-theme-label>Dark Mode</span></button>
-        <button class="mobile-toggle" data-nav-toggle aria-expanded="false" aria-label="Toggle navigation">Menu</button>
+        <div class="nav-cta">
+          <a class="btn btn-secondary" href="/commands">Explore Commands</a>
+          <button
+            class="theme-toggle"
+            type="button"
+            data-theme-toggle
+            aria-label="Toggle color theme"
+          >
+            <span data-theme-label>Dark Mode</span>
+          </button>
+          <button
+            class="mobile-toggle"
+            data-nav-toggle
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            Menu
+          </button>
+        </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main id="main-content" tabindex="-1">
-    <div class="container">
-      <section class="hero section">
-        <article class="card hero-copy reveal">
-          <p class="eyebrow">Discord Music Engine</p>
-          <h1 class="hero-title">Turn every guild into a <span class="gradient-text" data-rotate="live DJ room|smart music hub|premium listening lounge">live DJ room</span>.</h1>
-          <p class="hero-sub">
-            Eleone is a full-stack Discord music bot built with Lavalink, advanced queue controls, Spotify flow,
-            cloud playlists, favorites, premium access logic, and a modern Components V2 interface.
-          </p>
+    <main id="main-content" tabindex="-1">
+      <div class="container">
+        <section class="hero section">
+          <article class="card hero-copy reveal">
+            <p class="eyebrow">Discord Music Engine</p>
+            <h1 class="hero-title">
+              Turn every guild into a
+              <span
+                class="gradient-text"
+                data-rotate="live DJ room|smart music hub|premium listening lounge"
+                >live DJ room</span
+              >.
+            </h1>
+            <p class="hero-sub">
+              Eleone is a full-stack Discord music bot built with Lavalink,
+              advanced queue controls, Spotify flow, cloud playlists, favorites,
+              premium access logic, and a modern Components V2 interface.
+            </p>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="/commands">View All Commands</a>
-            <a class="btn btn-secondary" href="/premium">Premium Systems</a>
-            <a class="btn btn-ghost" href="/features">Architecture</a>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="/commands">View All Commands</a>
+              <a class="btn btn-secondary" href="/premium">Premium Systems</a>
+              <a class="btn btn-ghost" href="/features">Architecture</a>
+            </div>
+
+            <div class="hero-badges">
+              <span class="badge">Node.js 20+</span>
+              <span class="badge">discord.js v14+</span>
+              <span class="badge">Lavalink + Spotify</span>
+              <span class="badge">Supabase-backed</span>
+            </div>
+          </article>
+
+          <aside class="card hero-panel reveal">
+            <div class="panel-live">
+              <div>
+                <strong>Realtime Bot Status</strong>
+                <div
+                  style="
+                    color: var(--text-soft);
+                    font-size: 0.86rem;
+                    margin-top: 0.2rem;
+                  "
+                >
+                  Optimized for multi-feature production servers
+                </div>
+              </div>
+              <div class="pulse" aria-hidden="true"></div>
+            </div>
+
+            <div class="panel-grid">
+              <div class="metric">
+                <div class="num" data-counter="47">47</div>
+                <div class="cap">Core Commands</div>
+              </div>
+              <div class="metric">
+                <div class="num" data-counter="10">10</div>
+                <div class="cap">Command Categories</div>
+              </div>
+              <div class="metric">
+                <div class="num" data-counter="6">6</div>
+                <div class="cap">Musicard Themes</div>
+              </div>
+              <div class="metric">
+                <div class="num" data-counter="16">16</div>
+                <div class="cap">Audio Filter Presets</div>
+              </div>
+            </div>
+
+            <div class="control-stack">
+              <strong>In-player Controls</strong>
+              <div class="control-row">
+                <span>Pause</span><span>Resume</span><span>Skip</span
+                ><span>Loop</span><span>Stop</span>
+              </div>
+              <div class="control-row">
+                <span>Add to Playlist</span><span>Favorite</span
+                ><span>Queue Nav</span>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="section reveal">
+          <div class="card stat-band">
+            <div class="stat-item">
+              <h3 data-counter="24">24</h3>
+              <p>Core uptime optimization and reconnect logic</p>
+            </div>
+            <div class="stat-item">
+              <h3 data-counter="12">12</h3>
+              <p>Hour vote premium cycle support with renewal flow</p>
+            </div>
+            <div class="stat-item">
+              <h3 data-counter="2">2</h3>
+              <p>Main command groups: Main + Extra architecture</p>
+            </div>
+            <div class="stat-item">
+              <h3 data-counter="100">100</h3>
+              <p>Percent Components V2 based container experience</p>
+            </div>
           </div>
+        </section>
 
-          <div class="hero-badges">
-            <span class="badge">Node.js 20+</span>
-            <span class="badge">discord.js v14+</span>
-            <span class="badge">Lavalink + Spotify</span>
-            <span class="badge">Supabase-backed</span>
-          </div>
-        </article>
-
-        <aside class="card hero-panel reveal">
-          <div class="panel-live">
+        <section class="section">
+          <div class="section-head reveal">
             <div>
-              <strong>Realtime Bot Status</strong>
-              <div style="color: var(--text-soft); font-size: .86rem; margin-top: .2rem;">Optimized for multi-feature production servers</div>
-            </div>
-            <div class="pulse" aria-hidden="true"></div>
-          </div>
-
-          <div class="panel-grid">
-            <div class="metric">
-              <div class="num" data-counter="47">47</div>
-              <div class="cap">Core Commands</div>
-            </div>
-            <div class="metric">
-              <div class="num" data-counter="10">10</div>
-              <div class="cap">Command Categories</div>
-            </div>
-            <div class="metric">
-              <div class="num" data-counter="6">6</div>
-              <div class="cap">Musicard Themes</div>
-            </div>
-            <div class="metric">
-              <div class="num" data-counter="16">16</div>
-              <div class="cap">Audio Filter Presets</div>
+              <p class="eyebrow">Feature Modules</p>
+              <h2 class="h-title">
+                Everything already running in your Eleone bot
+              </h2>
+              <p class="h-desc">
+                Website mirrors live bot systems: music pipeline, premium gate,
+                playlist cloud, Spotify profiles, favorites, no-prefix and owner
+                panels.
+              </p>
             </div>
           </div>
 
-          <div class="control-stack">
-            <strong>In-player Controls</strong>
-            <div class="control-row">
-              <span>Pause</span><span>Resume</span><span>Skip</span><span>Loop</span><span>Stop</span>
-            </div>
-            <div class="control-row">
-              <span>Add to Playlist</span><span>Favorite</span><span>Queue Nav</span>
-            </div>
-          </div>
-        </aside>
-      </section>
-
-      <section class="section reveal">
-        <div class="card stat-band">
-          <div class="stat-item">
-            <h3 data-counter="24">24</h3>
-            <p>Core uptime optimization and reconnect logic</p>
-          </div>
-          <div class="stat-item">
-            <h3 data-counter="12">12</h3>
-            <p>Hour vote premium cycle support with renewal flow</p>
-          </div>
-          <div class="stat-item">
-            <h3 data-counter="2">2</h3>
-            <p>Main command groups: Main + Extra architecture</p>
-          </div>
-          <div class="stat-item">
-            <h3 data-counter="100">100</h3>
-            <p>Percent Components V2 based container experience</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-head reveal">
-          <div>
-            <p class="eyebrow">Feature Modules</p>
-            <h2 class="h-title">Everything already running in your Eleone bot</h2>
-            <p class="h-desc">Website mirrors live bot systems: music pipeline, premium gate, playlist cloud, Spotify profiles, favorites, no-prefix and owner panels.</p>
-          </div>
-        </div>
-
-        <div class="grid grid-3">
-          <article class="module-card reveal">
-            <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></div>
-            <h3>Music Core</h3>
-            <p>Fast search, queue pages, nowplaying status, lyrics, autoplay, voice safeguards, and rich controls.</p>
-          </article>
-          <article class="module-card reveal">
-            <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg></div>
-            <h3>Realtime Filters</h3>
-            <p>Bassboost, vaporwave, nightcore, karaoke, 8D, tremolo, radio and more presets in one flow.</p>
-          </article>
-          <article class="module-card reveal">
-            <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h3l2-7 3 16 3-11 2 5h7"></path></svg></div>
-            <h3>Spotify Layer</h3>
-            <p>Profile connect, playlist listing, direct play and premium-gated Spotify control commands.</p>
-          </article>
-          <article class="module-card reveal">
-            <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.6 1.7A4 4 0 0 0 6.5 19h11z"></path></svg></div>
-            <h3>Cloud Playlists</h3>
-            <p>User/shared playlists, autosync, autoload, import/export and playlist ID sharing workflow.</p>
-          </article>
-          <article class="module-card reveal">
-            <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.63 22 9.24 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.24 8.91 8.63 12 2"></polygon></svg></div>
-            <h3>Favorites Engine</h3>
-            <p>Save from player, queue to favorites, play by index, or play all favorite tracks in order.</p>
-          </article>
-          <article class="module-card reveal">
-            <div class="module-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2 20 2-10 5 5 3-9 3 9 5-5 2 10z"></path></svg></div>
-            <h3>Premium + Owner</h3>
-            <p>Vote premium, paid token redeem, 24/7 mode, myprefix, no-prefix controls and owner svlist panel.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="grid grid-2">
-          <article class="card flow reveal">
-            <div class="section-head" style="margin-bottom: 1rem;">
-              <div>
-                <p class="eyebrow">Bot Pipeline</p>
-                <h2 class="h-title">How playback flows inside Eleone</h2>
+          <div class="grid grid-3">
+            <article class="module-card reveal">
+              <div class="module-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M9 18V5l12-2v13"></path>
+                  <circle cx="6" cy="18" r="3"></circle>
+                  <circle cx="18" cy="16" r="3"></circle>
+                </svg>
               </div>
-            </div>
-            <ol class="flow-list">
-              <li><span><b>01</b> Prefix command hits message handler</span><span class="chip">.play query</span></li>
-              <li><span><b>02</b> Premium + channel + permission checks</span><span class="chip">Access Gate</span></li>
-              <li><span><b>03</b> Lavalink resolve + queue update</span><span class="chip">Search</span></li>
-              <li><span><b>04</b> Components V2 player container render</span><span class="chip">UI Sync</span></li>
-              <li><span><b>05</b> Auto transitions (loop/autoplay/247)</span><span class="chip">Continuous</span></li>
-            </ol>
-          </article>
-
-          <article class="card flow reveal">
-            <div class="section-head" style="margin-bottom: 1rem;">
-              <div>
-                <p class="eyebrow">Quick Navigation</p>
-                <h2 class="h-title">Explore every module page</h2>
+              <h3>Music Core</h3>
+              <p>
+                Fast search, queue pages, nowplaying status, lyrics, autoplay,
+                voice safeguards, and rich controls.
+              </p>
+            </article>
+            <article class="module-card reveal">
+              <div class="module-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="4" y1="21" x2="4" y2="14"></line>
+                  <line x1="4" y1="10" x2="4" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12" y2="3"></line>
+                  <line x1="20" y1="21" x2="20" y2="16"></line>
+                  <line x1="20" y1="12" x2="20" y2="3"></line>
+                  <line x1="1" y1="14" x2="7" y2="14"></line>
+                  <line x1="9" y1="8" x2="15" y2="8"></line>
+                  <line x1="17" y1="16" x2="23" y2="16"></line>
+                </svg>
               </div>
-            </div>
-            <div class="quick-links">
-              <a href="/features">System Features</a>
-              <a href="/commands">Searchable Commands</a>
-              <a href="/premium">Premium Matrix</a>
-              <a href="/contact">Deploy Guide</a>
-              <a href="/commands#owner">Owner Tools</a>
-            </div>
-            <p class="h-desc" style="margin-top: 1rem;">This website lives in <code>Eleone/website</code> so you can deploy it separately or host via GitHub Pages/Cloudflare Pages.</p>
-          </article>
-        </div>
-      </section>
-    </div>
-  </main>
+              <h3>Realtime Filters</h3>
+              <p>
+                Bassboost, vaporwave, nightcore, karaoke, 8D, tremolo, radio and
+                more presets in one flow.
+              </p>
+            </article>
+            <article class="module-card reveal">
+              <div class="module-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M2 12h3l2-7 3 16 3-11 2 5h7"></path>
+                </svg>
+              </div>
+              <h3>Spotify Layer</h3>
+              <p>
+                Profile connect, playlist listing, direct play and premium-gated
+                Spotify control commands.
+              </p>
+            </article>
+            <article class="module-card reveal">
+              <div class="module-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M17.5 19a4.5 4.5 0 0 0 0-9 6 6 0 0 0-11.6 1.7A4 4 0 0 0 6.5 19h11z"
+                  ></path>
+                </svg>
+              </div>
+              <h3>Cloud Playlists</h3>
+              <p>
+                User/shared playlists, autosync, autoload, import/export and
+                playlist ID sharing workflow.
+              </p>
+            </article>
+            <article class="module-card reveal">
+              <div class="module-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <polygon
+                    points="12 2 15.09 8.63 22 9.24 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.24 8.91 8.63 12 2"
+                  ></polygon>
+                </svg>
+              </div>
+              <h3>Favorites Engine</h3>
+              <p>
+                Save from player, queue to favorites, play by index, or play all
+                favorite tracks in order.
+              </p>
+            </article>
+            <article class="module-card reveal">
+              <div class="module-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m2 20 2-10 5 5 3-9 3 9 5-5 2 10z"></path>
+                </svg>
+              </div>
+              <h3>Premium + Owner</h3>
+              <p>
+                Vote premium, paid token redeem, 24/7 mode, myprefix, no-prefix
+                controls and owner svlist panel.
+              </p>
+            </article>
+          </div>
+        </section>
 
-  <footer>
-    <div class="container footer-panel">
-      <div class="footer-row">
-        <span>Eleone Bot Web | <span data-year></span></span>
-        <div class="footer-links">
-          <a href="/">Home</a>
-          <a href="/features">Features</a>
-          <a href="/commands">Commands</a>
-          <a href="/premium">Premium</a>
-          <a href="/contact">Deploy</a>
+        <section class="section">
+          <div class="grid grid-2">
+            <article class="card flow reveal">
+              <div class="section-head" style="margin-bottom: 1rem">
+                <div>
+                  <p class="eyebrow">Bot Pipeline</p>
+                  <h2 class="h-title">How playback flows inside Eleone</h2>
+                </div>
+              </div>
+              <ol class="flow-list">
+                <li>
+                  <span><b>01</b> Prefix command hits message handler</span
+                  ><span class="chip">.play query</span>
+                </li>
+                <li>
+                  <span><b>02</b> Premium + channel + permission checks</span
+                  ><span class="chip">Access Gate</span>
+                </li>
+                <li>
+                  <span><b>03</b> Lavalink resolve + queue update</span
+                  ><span class="chip">Search</span>
+                </li>
+                <li>
+                  <span><b>04</b> Components V2 player container render</span
+                  ><span class="chip">UI Sync</span>
+                </li>
+                <li>
+                  <span><b>05</b> Auto transitions (loop/autoplay/247)</span
+                  ><span class="chip">Continuous</span>
+                </li>
+              </ol>
+            </article>
+
+            <article class="card flow reveal">
+              <div class="section-head" style="margin-bottom: 1rem">
+                <div>
+                  <p class="eyebrow">Quick Navigation</p>
+                  <h2 class="h-title">Explore every module page</h2>
+                </div>
+              </div>
+              <div class="quick-links">
+                <a href="/features">System Features</a>
+                <a href="/commands">Searchable Commands</a>
+                <a href="/premium">Premium Matrix</a>
+                <a href="/contact">Deploy Guide</a>
+                <a href="/commands#owner">Owner Tools</a>
+              </div>
+              <p class="h-desc" style="margin-top: 1rem">
+                This website lives in <code>Eleone/website</code> so you can
+                deploy it separately or host via GitHub Pages/Cloudflare Pages.
+              </p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container footer-panel">
+        <div class="footer-row">
+          <span>Eleone Bot Web | <span data-year></span></span>
+          <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/features">Features</a>
+            <a href="/commands">Commands</a>
+            <a href="/premium">Premium</a>
+            <a href="/contact">Deploy</a>
+          </div>
+        </div>
+        <div class="footer-legal">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-of-service">Terms of Service</a>
         </div>
       </div>
-      <div class="footer-legal">
-        <a href="/privacy-policy">Privacy Policy</a>
-        <a href="/terms-of-service">Terms of Service</a>
-      </div>
-    </div>
-  </footer>
+    </footer>
 
-  <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 
-  <button type="button" class="back-to-top" data-back-to-top aria-label="Back to top"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"></path><path d="m5 12 7-7 7 7"></path></svg></button>
-  <div class="toast-stack" data-toast-stack aria-live="polite"></div>
-</body>
+    <button
+      type="button"
+      class="back-to-top"
+      data-back-to-top
+      aria-label="Back to top"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        width="18"
+        height="18"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="M12 19V5"></path>
+        <path d="m5 12 7-7 7 7"></path>
+      </svg>
+    </button>
+    <div class="toast-stack" data-toast-stack aria-live="polite"></div>
+  </body>
 </html>

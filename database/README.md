@@ -65,11 +65,11 @@ Running them in this order helps ensure that any tables or database objects requ
 
 Before running SQL files on an existing production database:
 
-* Review the SQL carefully.
-* Back up important data.
-* Check whether tables or policies already exist.
-* Avoid running destructive statements such as `DROP TABLE` unless you understand their effects.
-* Make sure you are connected to the correct Supabase project.
+- Review the SQL carefully.
+- Back up important data.
+- Check whether tables or policies already exist.
+- Avoid running destructive statements such as `DROP TABLE` unless you understand their effects.
+- Make sure you are connected to the correct Supabase project.
 
 ## Project Structure
 

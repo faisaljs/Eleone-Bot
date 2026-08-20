@@ -1,19 +1,21 @@
 const { MessageFlags } = require("discord.js");
 
-const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? (1 << 15);
+const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 const MAX_TEXT_LEN = 3900;
 
 function safeText(value, fallback = null) {
-    const raw = value == null ? "" : String(value);
-    const trimmed = raw.trim();
-    const selected = trimmed.length
-        ? trimmed
-        : (fallback == null ? "" : String(fallback).trim());
+  const raw = value == null ? "" : String(value);
+  const trimmed = raw.trim();
+  const selected = trimmed.length
+    ? trimmed
+    : fallback == null
+      ? ""
+      : String(fallback).trim();
 
-    if (!selected.length) return null;
-    return selected.length > MAX_TEXT_LEN
-        ? `${selected.slice(0, MAX_TEXT_LEN - 3)}...`
-        : selected;
+  if (!selected.length) return null;
+  return selected.length > MAX_TEXT_LEN
+    ? `${selected.slice(0, MAX_TEXT_LEN - 3)}...`
+    : selected;
 }
 
 /**
@@ -32,54 +34,48 @@ function safeText(value, fallback = null) {
  * }} input
  */
 function createContainer(input) {
-    const {
-        title = "Eleone",
-        description,
-        sections = [],
-        media,
-        footer
-    } = input;
+  const { title = "Eleone", description, sections = [], media, footer } = input;
 
-    const children = [];
+  const children = [];
 
-    const titleText = safeText(`## ${title}`, "## Eleone");
-    if (titleText) children.push({ type: 10, content: titleText });
+  const titleText = safeText(`## ${title}`, "## Eleone");
+  if (titleText) children.push({ type: 10, content: titleText });
 
+  children.push({ type: 14, divider: true, spacing: 1 });
+
+  const descText = safeText(description, null);
+  if (descText) children.push({ type: 10, content: descText });
+
+  for (const section of sections) {
+    const header = section.title ? `**${safeText(section.title, "-")}**\n` : "";
+    const body = safeText(section.content, "-");
+    const block = safeText(`${header}${body || ""}`, null);
+    if (block) children.push({ type: 10, content: block });
+  }
+
+  if (media) {
+    const url = typeof media === "string" ? media : media.url;
+    children.push({
+      type: 12,
+      items: [{ media: { url } }],
+    });
+  }
+
+  const footerText = safeText(footer ? `-# ${footer}` : null, null);
+  if (footerText) {
     children.push({ type: 14, divider: true, spacing: 1 });
+    children.push({ type: 10, content: footerText });
+  }
 
-    const descText = safeText(description, null);
-    if (descText) children.push({ type: 10, content: descText });
-
-    for (const section of sections) {
-        const header = section.title ? `**${safeText(section.title, "-")}**\n` : "";
-        const body = safeText(section.content, "-");
-        const block = safeText(`${header}${body || ""}`, null);
-        if (block) children.push({ type: 10, content: block });
-    }
-
-    if (media) {
-        const url = typeof media === "string" ? media : media.url;
-        children.push({
-            type: 12,
-            items: [{ media: { url } }]
-        });
-    }
-
-    const footerText = safeText(footer ? `-# ${footer}` : null, null);
-    if (footerText) {
-        children.push({ type: 14, divider: true, spacing: 1 });
-        children.push({ type: 10, content: footerText });
-    }
-
-    return {
-        flags: COMPONENTS_V2_FLAG,
-        components: [
-            {
-                type: 17,
-                components: children
-            }
-        ]
-    };
+  return {
+    flags: COMPONENTS_V2_FLAG,
+    components: [
+      {
+        type: 17,
+        components: children,
+      },
+    ],
+  };
 }
 
 /**
@@ -93,22 +89,22 @@ function createContainer(input) {
  * }} input
  */
 function buildContainerMessage(input) {
-    const sections = (input.fields || []).map((f) => ({
-        title: safeText(f.name, "-") || "-",
-        content: safeText(f.value, "-") || "-"
-    }));
+  const sections = (input.fields || []).map((f) => ({
+    title: safeText(f.name, "-") || "-",
+    content: safeText(f.value, "-") || "-",
+  }));
 
-    return createContainer({
-        title: safeText(input.title || "Eleone", "Eleone") || "Eleone",
-        description: input.description,
-        sections,
-        media: input.image,
-        footer: input.footer
-    });
+  return createContainer({
+    title: safeText(input.title || "Eleone", "Eleone") || "Eleone",
+    description: input.description,
+    sections,
+    media: input.image,
+    footer: input.footer,
+  });
 }
 
 module.exports = {
-    COMPONENTS_V2_FLAG,
-    createContainer,
-    buildContainerMessage
+  COMPONENTS_V2_FLAG,
+  createContainer,
+  buildContainerMessage,
 };

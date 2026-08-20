@@ -36,7 +36,9 @@
 
 .plan.highlight {
   border-color: rgba(168, 85, 247, 0.4);
-  box-shadow: var(--shadow-md), 0 16px 35px rgba(168, 85, 247, 0.22);
+  box-shadow:
+    var(--shadow-md),
+    0 16px 35px rgba(168, 85, 247, 0.22);
   position: relative;
 }
 
@@ -112,7 +114,6 @@
     grid-template-columns: 1fr;
   }
 }
-
 
 @media (max-width: 640px) {
   .plan {

@@ -1,121 +1,153 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Eleone Bot | Page Not Found</title>
-  <meta name="description" content="This page doesn't exist. Find your way back to Eleone's commands, premium plans, or home." />
-  <meta name="robots" content="noindex" />
-  <script>
-    (function () {
-      try {
-        var t = localStorage.getItem("eleone-theme");
-        if (t === "dark" || t === "light") {
-          document.documentElement.setAttribute("data-theme", t);
-          return;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eleone Bot | Page Not Found</title>
+    <meta
+      name="description"
+      content="This page doesn't exist. Find your way back to Eleone's commands, premium plans, or home."
+    />
+    <meta name="robots" content="noindex" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("eleone-theme");
+          if (t === "dark" || t === "light") {
+            document.documentElement.setAttribute("data-theme", t);
+            return;
+          }
+          if (
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches
+          ) {
+            document.documentElement.setAttribute("data-theme", "dark");
+          }
+        } catch (e) {
+          // Ignore pre-init errors.
         }
-        if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
-          document.documentElement.setAttribute("data-theme", "dark");
-        }
-      } catch (e) {
-        // Ignore pre-init errors.
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%233b82f6'/%3E%3Cstop offset='52%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%2314b8a6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E"
+    />
+    <meta name="theme-color" content="#eef1fb" />
+    <style>
+      .notfound-wrap {
+        min-height: 62vh;
+        display: grid;
+        place-items: center;
+        text-align: center;
       }
-    })();
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/css/base.css" />
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%233b82f6'/%3E%3Cstop offset='52%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%2314b8a6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='url(%23g)'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EE%3C/text%3E%3C/svg%3E" />
-  <meta name="theme-color" content="#eef1fb" />
-  <style>
-    .notfound-wrap {
-      min-height: 62vh;
-      display: grid;
-      place-items: center;
-      text-align: center;
-    }
-    .notfound-card {
-      padding: 2.4rem 2rem;
-      max-width: 460px;
-    }
-    .notfound-code {
-      font-family: "Space Grotesk", "Sora", sans-serif;
-      font-size: clamp(3rem, 10vw, 4.5rem);
-      margin: 0;
-      background: var(--aurora);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-    .notfound-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      justify-content: center;
-      margin-top: 1.3rem;
-    }
-  </style>
-</head>
-<body>
-  <a class="skip-link" href="#main-content">Skip to content</a>
-  <div class="scroll-progress"><span data-scroll-progress></span></div>
-  <div class="bg-orb orb-1"></div>
-  <div class="bg-orb orb-2"></div>
-  <div class="bg-orb orb-3"></div>
+      .notfound-card {
+        padding: 2.4rem 2rem;
+        max-width: 460px;
+      }
+      .notfound-code {
+        font-family: "Space Grotesk", "Sora", sans-serif;
+        font-size: clamp(3rem, 10vw, 4.5rem);
+        margin: 0;
+        background: var(--aurora);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .notfound-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        justify-content: center;
+        margin-top: 1.3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <div class="scroll-progress"><span data-scroll-progress></span></div>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+    <div class="bg-orb orb-3"></div>
 
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <a href="/" class="brand">
-        <span class="brand-badge">E</span>
-        <span>Eleone Bot</span>
-      </a>
-      <nav class="nav-links" data-nav-links>
-        <a href="/" data-nav-link>Home</a>
-        <a href="/features" data-nav-link>Features</a>
-        <a href="/commands" data-nav-link>Commands</a>
-        <a href="/premium" data-nav-link>Premium</a>
-        <a href="/contact" data-nav-link>Deploy</a>
-      </nav>
-      <div class="nav-cta">
-        <button class="theme-toggle" type="button" data-theme-toggle aria-label="Toggle color theme"><span data-theme-label>Dark Mode</span></button>
-        <button class="mobile-toggle" data-nav-toggle aria-expanded="false" aria-label="Toggle navigation">Menu</button>
-      </div>
-    </div>
-  </header>
-
-  <main id="main-content" tabindex="-1">
-    <div class="container notfound-wrap">
-      <article class="card notfound-card reveal is-visible">
-        <p class="notfound-code">404</p>
-        <h1 class="h-title" style="font-size:1.35rem;">This page skipped the queue</h1>
-        <p class="h-desc" style="margin-left:auto;margin-right:auto;">The page you're looking for doesn't exist, or the link's out of date. Try one of these instead.</p>
-        <div class="notfound-actions">
-          <a class="btn btn-primary" href="/">Back Home</a>
-          <a class="btn btn-secondary" href="/commands">Command Explorer</a>
-        </div>
-      </article>
-    </div>
-  </main>
-
-  <footer>
-    <div class="container footer-panel">
-      <div class="footer-row">
-        <span>Eleone Bot Web | <span data-year></span></span>
-        <div class="footer-links">
-          <a href="/">Home</a>
-          <a href="/features">Features</a>
-          <a href="/commands">Commands</a>
-          <a href="/premium">Premium</a>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="/" class="brand">
+          <span class="brand-badge">E</span>
+          <span>Eleone Bot</span>
+        </a>
+        <nav class="nav-links" data-nav-links>
+          <a href="/" data-nav-link>Home</a>
+          <a href="/features" data-nav-link>Features</a>
+          <a href="/commands" data-nav-link>Commands</a>
+          <a href="/premium" data-nav-link>Premium</a>
+          <a href="/contact" data-nav-link>Deploy</a>
+        </nav>
+        <div class="nav-cta">
+          <button
+            class="theme-toggle"
+            type="button"
+            data-theme-toggle
+            aria-label="Toggle color theme"
+          >
+            <span data-theme-label>Dark Mode</span>
+          </button>
+          <button
+            class="mobile-toggle"
+            data-nav-toggle
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            Menu
+          </button>
         </div>
       </div>
-      <div class="footer-legal">
-        <a href="/privacy-policy">Privacy Policy</a>
-        <a href="/terms-of-service">Terms of Service</a>
-      </div>
-    </div>
-  </footer>
+    </header>
 
-  <script src="assets/js/main.js"></script>
-</body>
+    <main id="main-content" tabindex="-1">
+      <div class="container notfound-wrap">
+        <article class="card notfound-card reveal is-visible">
+          <p class="notfound-code">404</p>
+          <h1 class="h-title" style="font-size: 1.35rem">
+            This page skipped the queue
+          </h1>
+          <p class="h-desc" style="margin-left: auto; margin-right: auto">
+            The page you're looking for doesn't exist, or the link's out of
+            date. Try one of these instead.
+          </p>
+          <div class="notfound-actions">
+            <a class="btn btn-primary" href="/">Back Home</a>
+            <a class="btn btn-secondary" href="/commands">Command Explorer</a>
+          </div>
+        </article>
+      </div>
+    </main>
+
+    <footer>
+      <div class="container footer-panel">
+        <div class="footer-row">
+          <span>Eleone Bot Web | <span data-year></span></span>
+          <div class="footer-links">
+            <a href="/">Home</a>
+            <a href="/features">Features</a>
+            <a href="/commands">Commands</a>
+            <a href="/premium">Premium</a>
+          </div>
+        </div>
+        <div class="footer-legal">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms-of-service">Terms of Service</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>
