@@ -1,4 +1,4 @@
-const { disconnectSpotifyProfile } = require("./service");
+const { disconnectSpotifyProfile } = require("../../spotify/service");
 
 module.exports = {
     name: "spdisconnect",

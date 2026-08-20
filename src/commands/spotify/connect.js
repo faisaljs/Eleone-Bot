@@ -1,5 +1,5 @@
-const { connectSpotifyProfile, hasSpotifyFeatureAccess } = require("./service");
-const { voteUrl, buyUrl } = require("../premium/service");
+const { connectSpotifyProfile, hasSpotifyFeatureAccess } = require("../../spotify/service");
+const { voteUrl, buyUrl } = require("../../premium/service");
 
 module.exports = {
     name: "spconnect",

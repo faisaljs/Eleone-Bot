@@ -1,4 +1,4 @@
-const { listUserPlaylists, hasSpotifyFeatureAccess } = require("./service");
+const { listUserPlaylists, hasSpotifyFeatureAccess } = require("../../spotify/service");
 
 function short(text, max = 120) {
     const v = String(text || "").trim();

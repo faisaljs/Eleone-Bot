@@ -1,6 +1,6 @@
 const { MessageFlags } = require("discord.js");
-const { formatUptime } = require("../utils/format");
-const { getUserMetrics } = require("../utils/userMetrics");
+const { formatUptime } = require("../../utils/format");
+const { getUserMetrics } = require("../../utils/userMetrics");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? (1 << 15);
 

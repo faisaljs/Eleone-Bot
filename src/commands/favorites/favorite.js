@@ -4,7 +4,7 @@ const {
     listFavorites,
     getFavoriteByIndex,
     removeFavoriteByIndex
-} = require("./store");
+} = require("../../favorites/store");
 
 const MAX_LIST_TEXT = 3600;
 

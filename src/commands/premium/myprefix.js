@@ -1,6 +1,6 @@
 const { MessageFlags } = require("discord.js");
 const { isVotePremiumActive, hasUserPaidPremiumAccess } = require("./profile");
-const { setPremiumUserPrefix, voteUrl, buyUrl } = require("./service");
+const { setPremiumUserPrefix, voteUrl, buyUrl } = require("../../premium/service");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? (1 << 15);
 

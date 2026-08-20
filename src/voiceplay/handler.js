@@ -1,6 +1,6 @@
 const { buildContainerMessage } = require("../components/containerBuilder");
 const { getVoicePlayEnabled, setVoicePlayEnabled } = require("./store");
-const { isVotePremiumActive, hasUserPaidPremiumAccess } = require("../premium/profile");
+const { isVotePremiumActive, hasUserPaidPremiumAccess } = require("../commands/premium/profile");
 
 const cooldownMap = new Map();
 const COOLDOWN_MS = 8000;

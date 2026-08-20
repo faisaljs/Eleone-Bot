@@ -11,7 +11,7 @@ const {
     disableGuildAutoplay,
     hasUserPaidPremiumAccess,
     isVotePremiumActive
-} = require("../premium/profile");
+} = require("../commands/premium/profile");
 const { listPlaylists, addTrack } = require("../playlists/store");
 const { addFavorite } = require("../favorites/store");
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? (1 << 15);

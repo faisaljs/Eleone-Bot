@@ -1,4 +1,4 @@
-const { formatUptime } = require("../utils/format");
+const { formatUptime } = require("../../utils/format");
 const { buildUtilityPayload } = require("./card");
 
 module.exports = {

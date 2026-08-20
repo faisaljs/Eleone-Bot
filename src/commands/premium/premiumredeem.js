@@ -1,5 +1,5 @@
 const { PermissionFlagsBits } = require("discord.js");
-const { redeemPremiumToken } = require("./service");
+const { redeemPremiumToken } = require("../../premium/service");
 
 module.exports = {
     name: "premiumredeem",

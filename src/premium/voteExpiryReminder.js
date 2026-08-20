@@ -1,6 +1,6 @@
 const { MessageFlags } = require("discord.js");
 const { voteUrl, buyUrl } = require("./service");
-const { listExpiredVoteUsersForNotify, markVoteExpiryNotified } = require("./profile");
+const { listExpiredVoteUsersForNotify, markVoteExpiryNotified } = require("../commands/premium/profile")
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? (1 << 15);
 const CHECK_INTERVAL_MS = Math.max(60_000, Number(process.env.VOTE_EXPIRY_CHECK_MS || 300_000));

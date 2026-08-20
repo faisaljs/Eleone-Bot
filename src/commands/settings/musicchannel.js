@@ -1,5 +1,5 @@
 const { PermissionFlagsBits } = require("discord.js");
-const { getMusicChannel, setMusicChannel } = require("../database/guildConfig");
+const { getMusicChannel, setMusicChannel } = require("../../database/guildConfig");
 
 module.exports = {
     name: "musicchannel",

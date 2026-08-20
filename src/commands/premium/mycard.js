@@ -5,7 +5,7 @@ const {
     getGuildVoteRow,
     isGuildPaidPremiumActive
 } = require("./profile");
-const { setGuildMusicardTheme, voteUrl, buyUrl } = require("./service");
+const { setGuildMusicardTheme, voteUrl, buyUrl } = require("../../premium/service");
 
 const AVAILABLE = "`ease`, `glass`, `neon`, `sunset`, `ocean`, `mono`";
 

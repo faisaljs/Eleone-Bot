@@ -1,4 +1,4 @@
-const { getPrefix, getMusicChannel } = require("../database/guildConfig");
+const { getPrefix, getMusicChannel } = require("../../database/guildConfig");
 const {
     getGuildVoteRow,
     isActiveVote,

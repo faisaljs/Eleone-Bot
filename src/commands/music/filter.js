@@ -1,4 +1,4 @@
-const { listFilterPresets, getFilterPreset } = require("../filter");
+const { listFilterPresets, getFilterPreset } = require("../../filter");
 
 function formatFilterList() {
     return listFilterPresets()

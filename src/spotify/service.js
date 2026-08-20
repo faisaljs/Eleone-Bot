@@ -1,4 +1,4 @@
-const { isVotePremiumActive, hasUserPaidPremiumAccess } = require("../premium/profile");
+const { isVotePremiumActive, hasUserPaidPremiumAccess } = require("../commands/premium/profile");
 const { getSpotifyProfile, upsertSpotifyProfile, deleteSpotifyProfile } = require("./store");
 
 const listCache = new Map();

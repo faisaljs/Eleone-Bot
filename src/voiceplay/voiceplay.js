@@ -1,4 +1,4 @@
-const { isVotePremiumActive, hasUserPaidPremiumAccess } = require("../premium/profile");
+const { isVotePremiumActive, hasUserPaidPremiumAccess } = require("../commands/premium/profile");
 const { voteUrl, buyUrl } = require("../premium/service");
 const { getVoicePlayEnabled, setVoicePlayEnabled } = require("./store");
 

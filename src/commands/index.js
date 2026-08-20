@@ -9,6 +9,7 @@ function collectJsFiles(rootDir) {
 
     for (const entry of entries) {
         const full = path.join(rootDir, entry.name);
+
         if (entry.isDirectory()) {
             out.push(...collectJsFiles(full));
             continue;
@@ -35,29 +36,23 @@ function isCommandModule(mod) {
 }
 
 function loadCommands() {
-    const commandsDir = __dirname;
-    const utilityDir = path.resolve(__dirname, "..", "utility");
-    const settingsDir = path.resolve(__dirname, "..", "settings");
-    const premiumDir = path.resolve(__dirname, "..", "premium");
-    const spotifyDir = path.resolve(__dirname, "..", "spotify");
-    const playlistsDir = path.resolve(__dirname, "..", "playlists");
-    const favoritesDir = path.resolve(__dirname, "..", "favorites");
-    const generalDir = path.resolve(__dirname, "..", "general");
+    const files = collectJsFiles(__dirname);
+    const commands = [];
 
-    const files = [
-        ...collectJsFiles(commandsDir),
-        ...collectJsFiles(utilityDir),
-        ...collectJsFiles(settingsDir),
-        ...collectJsFiles(premiumDir),
-        ...collectJsFiles(spotifyDir),
-        ...collectJsFiles(playlistsDir),
-        ...collectJsFiles(favoritesDir),
-        ...collectJsFiles(generalDir)
-    ];
+    for (const file of files) {
+        try {
+            const mod = require(file);
 
-    return files
-        .map((file) => require(file))
-        .filter(isCommandModule);
+            if (isCommandModule(mod)) {
+                commands.push(mod);
+            }
+        } catch (error) {
+            console.error(`Failed to load command: ${file}`);
+            console.error(error);
+        }
+    }
+
+    return commands;
 }
 
 module.exports = { loadCommands };

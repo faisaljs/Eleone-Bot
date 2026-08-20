@@ -12,7 +12,7 @@ const {
     clearTracks,
     getSettings,
     setSettings
-} = require("./store");
+} = require("../../playlists/store");
 
 const MAX_LIST_TEXT = 3500;
 

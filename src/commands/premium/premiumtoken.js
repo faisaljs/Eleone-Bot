@@ -1,5 +1,5 @@
 const { MessageFlags } = require("discord.js");
-const { createPremiumToken, TOKEN_PLANS } = require("./service");
+const { createPremiumToken, TOKEN_PLANS } = require("../../premium/service");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? (1 << 15);
 const SESSION_TTL_MS = 10 * 60 * 1000;
@@ -24,7 +24,7 @@ function durationOptions() {
     return TOKEN_PLANS.map((p) => ({
         label: p.label,
         value: p.key,
-        description: `INR ${p.priceInr}${p.days ? ` • ${p.days} days` : " • Lifetime"}`
+        description: `INR ${p.priceInr}${p.days ? ` ï¿½ ${p.days} days` : " ï¿½ Lifetime"}`
     }));
 }
 

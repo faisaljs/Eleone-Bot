@@ -1,4 +1,4 @@
-const { supabase } = require("../database/supabase");
+const { supabase } = require("../../database/supabase");
 
 const CACHE_TTL_MS = 60 * 1000;
 const userCache = new Map();

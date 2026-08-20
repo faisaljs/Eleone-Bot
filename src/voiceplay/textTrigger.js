@@ -1,5 +1,5 @@
 const { getVoicePlayEnabled } = require("./store");
-const { isVotePremiumActive, hasUserPaidPremiumAccess } = require("../premium/profile");
+const { isVotePremiumActive, hasUserPaidPremiumAccess } = require("../commands/premium/profile");
 
 function extractPlayQuery(text) {
     const value = String(text || "").trim();

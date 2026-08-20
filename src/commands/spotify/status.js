@@ -1,4 +1,4 @@
-const { getSpotifyProfile, hasSpotifyFeatureAccess } = require("./service");
+const { getSpotifyProfile, hasSpotifyFeatureAccess } = require("../../spotify/service");
 
 module.exports = {
     name: "spstatus",

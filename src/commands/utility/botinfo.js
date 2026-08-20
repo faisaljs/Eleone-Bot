@@ -1,7 +1,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const { MessageFlags } = require("discord.js");
-const { getUserMetrics } = require("../utils/userMetrics");
+const { getUserMetrics } = require("../../utils/userMetrics");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? (1 << 15);
 const BOTINFO_VIEW_TTL_MS = 20 * 60 * 1000;

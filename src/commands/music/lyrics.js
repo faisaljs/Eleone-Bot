@@ -1,6 +1,6 @@
 const { MessageFlags } = require("discord.js");
-const { fetchLyrics, fetchLyricsByQuery, toHinglishLyrics } = require("../utils/lyrics");
-const { formatDuration } = require("../utils/format");
+const { fetchLyrics, fetchLyricsByQuery, toHinglishLyrics } = require("../../utils/lyrics");
+const { formatDuration } = require("../../utils/format");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? (1 << 15);
 const VIEW_TTL_MS = 15 * 60 * 1000;

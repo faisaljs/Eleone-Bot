@@ -1,12 +1,12 @@
 const { MessageFlags } = require("discord.js");
 const { isVotePremiumActive, hasUserPaidPremiumAccess } = require("../premium/profile");
-const { voteUrl, buyUrl } = require("../premium/service");
+const { voteUrl, buyUrl } = require("../../premium/service");
 const {
     getGlobalAfk,
     getGuildAfk,
     getEffectiveAfk
-} = require("../database/afk");
-const { enableAfk, disableAfk } = require("./afkService");
+} = require("../../database/afk");
+const { enableAfk, disableAfk } = require("../../general/afkService");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? (1 << 15);
 const PANEL_TTL_MS = 10 * 60 * 1000;

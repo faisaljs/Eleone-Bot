@@ -1,7 +1,7 @@
 const { ActivityType } = require("discord.js");
 const { ensureGuild } = require("../database/guildConfig");
 const { startNoPrefixExpiryLoop } = require("../services/noPrefixService");
-const { listActive247GuildRows } = require("../premium/profile");
+const { listActive247GuildRows } = require("../commands/premium/profile");
 const { startVoteExpiryReminderLoop } = require("../premium/voteExpiryReminder");
 
 function pickTextChannelId(guild) {

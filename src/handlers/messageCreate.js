@@ -1,7 +1,7 @@
 const { buildContainerMessage } = require("../components/containerBuilder");
 const { getPrefix, getMusicChannel } = require("../database/guildConfig");
 const { isNoPrefixActive } = require("../database/noPrefix");
-const { getActiveUserPrefix } = require("../premium/profile");
+const { getActiveUserPrefix } = require("../commands/premium/profile")
 const { processAfkMentions, clearAuthorAfkIfNeeded } = require("../general/afkService");
 
 const MUSIC_LOCK_COMMANDS = new Set([

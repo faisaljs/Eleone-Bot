@@ -4,7 +4,7 @@ const {
     getGuild247Settings,
     setGuild247Settings
 } = require("./profile");
-const { voteUrl, buyUrl } = require("./service");
+const { voteUrl, buyUrl } = require("../../premium/service");
 
 async function ensureJoined(bot, message, voiceChannel) {
     const guildId = message.guildId;

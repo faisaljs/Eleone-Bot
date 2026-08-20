@@ -1,4 +1,4 @@
-const { hasSpotifyFeatureAccess, getCachedPlaylistByNumber } = require("./service");
+const { hasSpotifyFeatureAccess, getCachedPlaylistByNumber } = require("../../spotify/service");
 
 function parsePlaylistUrl(input) {
     const value = String(input || "").trim();

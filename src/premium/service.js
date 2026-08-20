@@ -14,7 +14,7 @@ const {
     activateGuildPaidPremium,
     isGuildPaidPremiumActive,
     isGuildAnyPremiumActive
-} = require("./profile");
+} = require("../commands/premium/profile");
 const { hasVotedOnTopGG } = require("./topgg");
 
 const ALLOWED_THEMES = new Set(["ease", "glass", "neon", "sunset", "ocean", "mono"]);

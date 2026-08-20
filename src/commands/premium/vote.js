@@ -1,5 +1,5 @@
 const { MessageFlags, PermissionFlagsBits } = require("discord.js");
-const { syncVotePremium, voteUrl, buyUrl } = require("./service");
+const { syncVotePremium, voteUrl, buyUrl } = require("../../premium/service");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? (1 << 15);
 

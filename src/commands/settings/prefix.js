@@ -1,5 +1,5 @@
 const { PermissionsBitField } = require("discord.js");
-const { setPrefix } = require("../database/guildConfig");
+const { setPrefix } = require("../../database/guildConfig");
 
 module.exports = {
     name: "prefix",
