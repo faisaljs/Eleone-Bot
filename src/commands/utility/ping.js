@@ -1,4 +1,5 @@
 const { MessageFlags } = require("discord.js");
+const { emoji } = require("../../config/emoji");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 
@@ -17,7 +18,7 @@ module.exports = {
       null;
 
     const children = [
-      { type: 10, content: "## Pong" },
+      { type: 10, content: `## ${emoji.wifi} Pong` },
       { type: 14, divider: true, spacing: 1 },
       {
         type: 9,

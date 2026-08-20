@@ -1,5 +1,6 @@
 const os = require("node:os");
 const { buildUtilityPayload } = require("./card");
+const { emoji } = require("../../config/emoji");
 
 module.exports = {
   name: "system",
@@ -16,7 +17,7 @@ module.exports = {
     await message.reply(
       buildUtilityPayload({
         bot,
-        title: "System",
+        title: `${emoji.system} System`,
         summary: "Host machine and runtime health.",
         details: [
           `**Platform:** ${os.platform()} (${os.arch()})`,

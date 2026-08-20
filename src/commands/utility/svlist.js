@@ -1,4 +1,5 @@
 const { MessageFlags } = require("discord.js");
+const { emoji } = require("../../config/emoji");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 const PAGE_SIZE = 5;
@@ -21,6 +22,18 @@ function cleanupViews() {
   for (const [token, view] of views.entries()) {
     if (view.expiresAt <= now) views.delete(token);
   }
+}
+
+function parseEmoji(value) {
+  const match = String(value || "").match(/^<(a?):(\w+):(\d+)>$/);
+
+  if (!match) return undefined;
+
+  return {
+    animated: Boolean(match[1]),
+    name: match[2],
+    id: match[3],
+  };
 }
 
 function collectGuildRows(client) {
@@ -57,7 +70,7 @@ function buildPagePayload({ rows, page, token, ownerId }) {
   const pageRows = rows.slice(start, start + PAGE_SIZE);
 
   const children = [
-    { type: 10, content: "## Server List" },
+    { type: 10, content: `## ${emoji.svlist} Server List` },
     { type: 14, divider: true, spacing: 1 },
     {
       type: 10,
@@ -87,6 +100,7 @@ function buildPagePayload({ rows, page, token, ownerId }) {
         style: 2,
         custom_id: `svlist_nav:${token}:prev`,
         label: "Previous",
+        emoji: parseEmoji(emoji.prev),
         disabled: clampedPage === 0,
       },
       {
@@ -94,6 +108,7 @@ function buildPagePayload({ rows, page, token, ownerId }) {
         style: 2,
         custom_id: `svlist_nav:${token}:next`,
         label: "Next",
+        emoji: parseEmoji(emoji.next),
         disabled: clampedPage >= totalPages - 1,
       },
     ],
@@ -103,7 +118,6 @@ function buildPagePayload({ rows, page, token, ownerId }) {
     type: 10,
     content: `Page **${clampedPage + 1}/${totalPages}**`,
   });
-  children.push({ type: 10, content: `Panel owner: <@${ownerId}>` });
 
   return {
     flags: COMPONENTS_V2_FLAG,
@@ -118,7 +132,7 @@ function buildExpiredPayload() {
       {
         type: 17,
         components: [
-          { type: 10, content: "## Server List Expired" },
+          { type: 10, content: `## ${emoji.expire} Server List Expired` },
           { type: 14, divider: true, spacing: 1 },
           { type: 10, content: "Run `svlist` again." },
         ],

@@ -1,5 +1,6 @@
 const { PermissionsBitField } = require("discord.js");
 const { buildUtilityPayload } = require("./card");
+const { emoji } = require("../../config/emoji");
 
 module.exports = {
   name: "invite",
@@ -25,7 +26,7 @@ module.exports = {
     await message.reply(
       buildUtilityPayload({
         bot,
-        title: "Invite Eleone",
+        title: `${emoji.bot} Invite Eleone`,
         summary: "Add Eleone to your server with recommended permissions.",
         details: [
           `**Client ID:** ${clientId || "Unknown"}`,
@@ -35,9 +36,7 @@ module.exports = {
           {
             label: "Invite Bot",
             url: inviteUrl,
-            emoji:
-              process.env.UTILITY_INVITE_EMOJI ||
-              "<:icons8chatbot48:1457046154473767117>",
+            emoji: emoji.bot,
           },
         ],
         footer: "Eleone Invite Panel",

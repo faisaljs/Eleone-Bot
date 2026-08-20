@@ -1,5 +1,6 @@
 const { formatUptime } = require("../../utils/format");
 const { buildUtilityPayload } = require("./card");
+const { emoji } = require("../../config/emoji");
 
 module.exports = {
   name: "uptime",
@@ -11,7 +12,7 @@ module.exports = {
     await message.reply(
       buildUtilityPayload({
         bot,
-        title: "Uptime",
+        title: `${emoji.clock} Uptime`,
         summary: "Current runtime status for Eleone.",
         details: [
           `**Uptime:** ${up}`,

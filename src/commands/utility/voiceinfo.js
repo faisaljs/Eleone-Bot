@@ -1,4 +1,5 @@
 const { buildUtilityPayload } = require("./card");
+const { emoji } = require("../../config/emoji");
 
 module.exports = {
   name: "voiceinfo",
@@ -16,7 +17,7 @@ module.exports = {
 
     if (!memberVoice && !botVoice) {
       await reply({
-        title: "Voice Info",
+        title: `${emoji.voice} Voice Info`,
         description: "No active voice channel found.",
       });
       return;
@@ -25,7 +26,7 @@ module.exports = {
     await message.reply(
       buildUtilityPayload({
         bot,
-        title: "Voice Info",
+        title: `${emoji.voice} Voice Info`,
         summary: "Current voice session details.",
         details: [
           `**Your Channel:** ${memberVoice ? `${memberVoice.name} (${memberVoice.id})` : "Not connected"}`,

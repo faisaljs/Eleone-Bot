@@ -1,4 +1,5 @@
 const { buildUtilityPayload } = require("./card");
+const { emoji } = require("../../config/emoji");
 
 const WEBSITE_URL = "https://eleone.vercel.app/";
 
@@ -11,14 +12,14 @@ module.exports = {
     await message.reply(
       buildUtilityPayload({
         bot,
-        title: "Eleone Website",
+        title: `${emoji.web} Eleone Website`,
         summary:
           "Open Eleone official web panel to explore features, commands, and premium systems.",
         buttons: [
           {
             label: "Open Website",
             url: WEBSITE_URL,
-            emoji: process.env.UTILITY_WEBSITE_EMOJI || "??",
+            emoji: emoji.web,
           },
         ],
         footer: "Eleone Web Access",

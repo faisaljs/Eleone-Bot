@@ -2,6 +2,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { MessageFlags } = require("discord.js");
 const { getUserMetrics } = require("../../utils/userMetrics");
+const { emoji } = require("../../config/emoji");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 const BOTINFO_VIEW_TTL_MS = 20 * 60 * 1000;
@@ -16,6 +17,18 @@ function cleanupViews() {
   for (const [token, view] of botInfoViews) {
     if (view.expiresAt <= now) botInfoViews.delete(token);
   }
+}
+
+function parseEmoji(value) {
+  const match = String(value || "").match(/^<(a?):(\w+):(\d+)>$/);
+
+  if (!match) return undefined;
+
+  return {
+    animated: Boolean(match[1]),
+    name: match[2],
+    id: match[3],
+  };
 }
 
 function walkSourceStats(rootDir) {
@@ -92,6 +105,7 @@ function buildControls(token, pageIndex) {
         style: 2,
         custom_id: `botinfo_nav:${token}:prev`,
         label: "Previous",
+        emoji: parseEmoji(emoji.prev),
         disabled: pageIndex <= 0,
       },
       {
@@ -99,6 +113,7 @@ function buildControls(token, pageIndex) {
         style: 2,
         custom_id: `botinfo_nav:${token}:next`,
         label: "Next",
+        emoji: parseEmoji(emoji.next),
         disabled: pageIndex >= 2,
       },
       {
@@ -106,12 +121,14 @@ function buildControls(token, pageIndex) {
         style: 1,
         custom_id: `botinfo_nav:${token}:home`,
         label: "Home",
+        emoji: parseEmoji(emoji.home),
       },
       {
         type: 2,
         style: 3,
         custom_id: `botinfo_nav:${token}:refresh`,
         label: "Refresh",
+        emoji: parseEmoji(emoji.refresh),
       },
     ],
   };
@@ -133,17 +150,17 @@ function renderPage({ bot, token, pageIndex, ownerId }) {
 
   const pages = [
     {
-      title: "## Bot Info",
+      title: `## ${emoji.info} Bot Info`,
       summary: `**Name:** ${botUser?.username || "Eleone"}\n**Bot ID:** ${botUser?.id || "Unknown"}\n**Created:** ${botUser?.createdTimestamp ? `<t:${Math.floor(botUser.createdTimestamp / 1000)}:F>` : "Unknown"}\n**Guilds:** ${stats.guilds}\n**Users (Total):** ${stats.users.toLocaleString()}\n**Users (Cached):** ${stats.cachedUsers.toLocaleString()}\n**Latency:** ${stats.pingMs}ms\n**Uptime:** ${formatDuration(stats.uptimeSec)}`,
       detail: "Page **1/3**\nUse Next for developer and technical pages.",
     },
     {
-      title: "## Developer",
+      title: `## ${emoji.dev} Developer`,
       summary: `**Developer:** [${ownerLabel}](${ownerDiscordUrl})\n**Discord Profile:** [Open Profile](${ownerDiscordUrl})\n**Instagram:** [Open Instagram](${ownerInstaUrl})`,
       detail: `This bot is maintained by **${ownerLabel}**.\nPage **2/3**`,
     },
     {
-      title: "## Live Technical Stats",
+      title: `## ${emoji.tech} Live Technical Stats`,
       summary: `**Node.js:** ${process.version}\n**Memory (RSS):** ${stats.memoryMb} MB\n**Dependencies:** ${stats.dependencyCount}\n**Source Folders:** ${stats.srcFolders}\n**Source Files:** ${stats.srcFiles}\n**Updated:** ${stats.updatedAt}`,
       detail: `**Libraries**\n${stats.dependencyNames.map((x, i) => `${i + 1}. \`${x}\``).join("\n") || "No dependencies found."}\n\nPage **3/3**`,
     },
@@ -170,7 +187,6 @@ function renderPage({ bot, token, pageIndex, ownerId }) {
     { type: 10, content: page.detail },
     { type: 14, divider: true, spacing: 1 },
     buildControls(token, pageIndex),
-    { type: 10, content: `Panel owner: <@${ownerId}>` },
   ];
 
   return {
@@ -186,7 +202,7 @@ function buildExpiredPayload() {
       {
         type: 17,
         components: [
-          { type: 10, content: "## Bot Info Panel Expired" },
+          { type: 10, content: `## ${emoji.expire} Bot Info Panel Expired` },
           { type: 14, divider: true, spacing: 1 },
           { type: 10, content: "Run `botinfo` again." },
         ],

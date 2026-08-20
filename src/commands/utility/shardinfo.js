@@ -1,4 +1,5 @@
 const { buildUtilityPayload } = require("./card");
+const { emoji } = require("../../config/emoji");
 
 module.exports = {
   name: "shardinfo",
@@ -13,7 +14,7 @@ module.exports = {
     await message.reply(
       buildUtilityPayload({
         bot,
-        title: "Shard Info",
+        title: `${emoji.shard} Shard Info`,
         summary: "Gateway shard runtime details.",
         details: [
           `**Current Shard ID:** ${shardId}`,

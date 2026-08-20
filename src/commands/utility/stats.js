@@ -1,6 +1,7 @@
 const { MessageFlags } = require("discord.js");
 const { formatUptime } = require("../../utils/format");
 const { getUserMetrics } = require("../../utils/userMetrics");
+const { emoji } = require("../../config/emoji");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 
@@ -41,7 +42,7 @@ module.exports = {
     ].join("\n");
 
     const children = [
-      { type: 10, content: "## Eleone Stats" },
+      { type: 10, content: `## ${emoji.stats} Eleone Stats` },
       { type: 14, divider: true, spacing: 1 },
       {
         type: 9,

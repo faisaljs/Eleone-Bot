@@ -1,4 +1,5 @@
 const { buildUtilityPayload } = require("./card");
+const { emoji } = require("../../config/emoji");
 
 module.exports = {
   name: "serverstats",
@@ -22,7 +23,7 @@ module.exports = {
     await message.reply(
       buildUtilityPayload({
         bot,
-        title: "Server Stats",
+        title: `${emoji.stats} Server Stats`,
         summary: `Live stats for **${guild.name}**.`,
         details: [
           `**Server ID:** ${guild.id}`,

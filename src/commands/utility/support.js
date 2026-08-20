@@ -1,4 +1,5 @@
 const { buildUtilityPayload } = require("./card");
+const { emoji } = require("../../config/emoji");
 
 module.exports = {
   name: "support",
@@ -19,7 +20,7 @@ module.exports = {
     await message.reply(
       buildUtilityPayload({
         bot,
-        title: "Support",
+        title: `${emoji.support} Support`,
         summary: "Need help with setup, music issues, or premium features?",
         details: [
           "**Use the buttons below to contact support.**",
@@ -29,23 +30,17 @@ module.exports = {
           {
             label: "Discord",
             url: serverUrl,
-            emoji:
-              process.env.NO_PREFIX_CONTACT_DISCORD_EMOJI ||
-              "<:icons8discord48:1458468876797177997>",
+            emoji: emoji.discord,
           },
           {
-            label: "Instagram",
+            label: "Github",
             url: instaUrl,
-            emoji:
-              process.env.NO_PREFIX_CONTACT_INSTAGRAM_EMOJI ||
-              "<:icons8instagram48:1458468893096237217>",
+            emoji: emoji.github,
           },
           {
             label: "Direct DM",
             url: dmUrl,
-            emoji:
-              process.env.NO_PREFIX_CONTACT_DM_EMOJI ||
-              "<:icons8chat48:1458468907281506324>",
+            emoji: emoji.message,
           },
         ],
         footer: "Eleone Support Center",
