@@ -29,6 +29,11 @@ const emoji = {
   general: "<:icons8countrymusic48:1539947369381109781>",
   setting: "<:icons8setting48:1539945411949633566>",
   owner: "<:icons8crown48:1539946265700212856>",
+  resume: "<:icons8play48:1539943166508269588>",
+  pause: "<:icons8pause48:1539947790963056650>",
+  stop: "<:icons8stop48:1539948303532163124>",
+  skip: "<:icons8skip48:1539948051374931969>",
+  loop: "<:icons8loop48:1539948194077736990>",
 
   get(name, fallback = "") {
     return this[name] || fallback;

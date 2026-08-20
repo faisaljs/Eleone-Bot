@@ -1,5 +1,6 @@
 const { MessageFlags } = require("discord.js");
 const { Shoukaku, Connectors } = require("shoukaku");
+const { emoji } = require("../config/emoji");
 const {
   buildGlassWaveNowPlayingCard,
   renderThemedCard,
@@ -1075,37 +1076,37 @@ class MusicManager {
     return {
       pause: await this.resolveEmojiForGuild(
         guildId,
-        process.env.MUSIC_BTN_PAUSE_EMOJI,
+        emoji.pause,
         "\u23f8\ufe0f",
       ),
       resume: await this.resolveEmojiForGuild(
         guildId,
-        process.env.MUSIC_BTN_RESUME_EMOJI,
+        emoji.resume,
         "\u25b6\ufe0f",
       ),
       skip: await this.resolveEmojiForGuild(
         guildId,
-        process.env.MUSIC_BTN_SKIP_EMOJI,
+        emoji.skip,
         "\u23ed\ufe0f",
       ),
       loop: await this.resolveEmojiForGuild(
         guildId,
-        process.env.MUSIC_BTN_LOOP_EMOJI,
+        emoji.loop,
         "\ud83d\udd01",
       ),
       stop: await this.resolveEmojiForGuild(
         guildId,
-        process.env.MUSIC_BTN_STOP_EMOJI,
+        emoji.stop,
         "\u23f9\ufe0f",
       ),
       playlist: await this.resolveEmojiForGuild(
         guildId,
-        process.env.MUSIC_BTN_PLAYLIST_EMOJI,
+        emoji.playlist,
         "\ud83d\udcdc",
       ),
       favorite: await this.resolveEmojiForGuild(
         guildId,
-        process.env.MUSIC_BTN_FAVORITE_EMOJI,
+        emoji.heart,
         "\u2b50",
       ),
     };
