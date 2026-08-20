@@ -20,6 +20,15 @@ const emoji = {
   clock: "<:icons8time48:1539952037641457716>",
   voice: "<:icons8audio48:1539970534597722162>",
   web: "<:icons8web48:1539949909283831889>",
+  music: "<:icons8music48:1539943927346630666>",
+  filter: "<:icons8filter48:1539944143982436472>",
+  spotify: "<:icons8spotify48:1539944303240151070>",
+  heart: "<:icons8favorite48:1539944654747738204>",
+  playlist: "<:icons8playlist48:1539946969198370947>",
+  premium: "<:icons8diamond48:1539946022074196048>",
+  general: "<:icons8countrymusic48:1539947369381109781>",
+  setting: "<:icons8setting48:1539945411949633566>",
+  owner: "<:icons8crown48:1539946265700212856>",
 
   get(name, fallback = "") {
     return this[name] || fallback;

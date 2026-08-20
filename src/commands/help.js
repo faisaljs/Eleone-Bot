@@ -1,4 +1,17 @@
 const { MessageFlags } = require("discord.js");
+const { emoji } = require("../config/emoji");
+
+function parseEmoji(value) {
+  const match = String(value || "").match(/^<(a?):(\w+):(\d+)>$/);
+
+  if (!match) return undefined;
+
+  return {
+    animated: Boolean(match[1]),
+    name: match[2],
+    id: match[3],
+  };
+}
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 const HELP_VIEW_TTL_MS = 20 * 60 * 1000;
@@ -279,6 +292,7 @@ const CATEGORIES = [
   {
     key: "music",
     label: "Music",
+    emoji: emoji.music,
     group: "main",
     description: "Playback, queue and voice control commands.",
     commands: [
@@ -299,6 +313,7 @@ const CATEGORIES = [
   {
     key: "filters",
     label: "Filters",
+    emoji: emoji.filter,
     group: "main",
     description: "Audio filter presets and realtime effects.",
     commands: ["filter"],
@@ -306,6 +321,7 @@ const CATEGORIES = [
   {
     key: "spotify",
     label: "Spotify",
+    emoji: emoji.spotify,
     group: "main",
     description:
       "Connect your Spotify profile, list playlists and play directly.",
@@ -320,6 +336,7 @@ const CATEGORIES = [
   {
     key: "favorites",
     label: "Favorites",
+    emoji: emoji.heart,
     group: "main",
     description: "Premium personal favorites list and quick playback.",
     commands: ["favorite"],
@@ -327,6 +344,7 @@ const CATEGORIES = [
   {
     key: "playlists",
     label: "Playlists",
+    emoji: emoji.playlist,
     group: "main",
     description:
       "Premium cloud playlists with autosync, import/export and autoload.",
@@ -335,6 +353,7 @@ const CATEGORIES = [
   {
     key: "premium",
     label: "Premium",
+    emoji: emoji.premium,
     group: "main",
     description:
       "Premium system: vote or buy access, musicard and prefix controls.",
@@ -351,6 +370,7 @@ const CATEGORIES = [
   {
     key: "general",
     label: "General",
+    emoji: emoji.general,
     group: "side",
     description: "Profile and AFK convenience commands.",
     commands: ["avatar", "banner", "afk", "membercount"],
@@ -358,6 +378,7 @@ const CATEGORIES = [
   {
     key: "settings",
     label: "Settings",
+    emoji: emoji.setting,
     group: "side",
     description: "Guild configuration commands.",
     commands: ["prefix", "musicchannel", "config"],
@@ -365,6 +386,7 @@ const CATEGORIES = [
   {
     key: "utility",
     label: "Utility",
+    emoji: emoji.info,
     group: "side",
     description: "General utility and bot info.",
     commands: [
@@ -385,6 +407,7 @@ const CATEGORIES = [
   {
     key: "owner",
     label: "Owner",
+    emoji: emoji.owner,
     group: "side",
     description: "Owner-only controls (no-prefix + server list).",
     commands: ["noprefix", "svlist"],
@@ -415,6 +438,7 @@ function listCategoryOptions(groupKey) {
     label: c.label,
     value: c.key,
     description: c.description,
+    ...(c.emoji ? { emoji: parseEmoji(c.emoji) } : {}),
   }));
 }
 
@@ -580,6 +604,7 @@ function buildCategoryPayload({
         style: 2,
         custom_id: `help_nav:${token}:prev`,
         label: "Previous",
+        emoji: emoji.prev,
         disabled: clampedPage === 0,
       },
       {
@@ -587,6 +612,7 @@ function buildCategoryPayload({
         style: 2,
         custom_id: `help_nav:${token}:next`,
         label: "Next",
+        emoji: emoji.next,
         disabled: clampedPage >= totalPages - 1,
       },
       {
@@ -594,6 +620,7 @@ function buildCategoryPayload({
         style: 1,
         custom_id: `help_nav:${token}:home`,
         label: "Home",
+        emoji: emoji.home,
       },
     ],
   });
