@@ -1,6 +1,8 @@
 const { Client, GatewayIntentBits, Partials } = require("discord.js");
 const { loadConfig } = require("./config");
 const { loadCommands } = require("./commands");
+const slashCommandDefs = require("./commands/slash/cmds");
+const { createInteractionContext } = require("./slash/adapter");
 const { registerReadyHandler } = require("./handlers/ready");
 const { registerGuildLifecycleHandler } = require("./handlers/guildLifecycle");
 const { registerMessageCreateHandler } = require("./handlers/messageCreate");
@@ -64,6 +66,11 @@ class EleoneBot {
       for (const alias of cmd.aliases || []) this.aliasMap.set(alias, cmd.name);
     }
 
+    this.slashCommandMap = new Map();
+    for (const def of slashCommandDefs) {
+      this.slashCommandMap.set(def.data.name, def);
+    }
+
     this.spotify = new SpotifyService(this.config.spotify);
 
     this.music = new MusicManager({
@@ -106,6 +113,46 @@ class EleoneBot {
     });
     this.client.on("interactionCreate", async (interaction) => {
       try {
+        if (interaction.isChatInputCommand()) {
+          const def = this.slashCommandMap.get(interaction.commandName);
+          if (!def) return;
+
+          if (typeof def.execute === "function") {
+            // Fully custom slash command (no prefix-command reuse).
+            await def.execute(interaction, this);
+            return;
+          }
+
+          const command = this.commandMap.get(def.prefixName);
+          if (!command) {
+            await interaction
+              .reply({
+                content: `Command \`${def.prefixName}\` not found.`,
+                ephemeral: true,
+              })
+              .catch(() => null);
+            return;
+          }
+
+          const args = def.buildArgs ? def.buildArgs(interaction) : [];
+          const { message, reply } = await createInteractionContext(
+            this,
+            interaction,
+            args,
+          );
+
+          try {
+            await command.execute({ bot: this, message, args, reply });
+          } catch (cmdError) {
+            console.error("[Slash Command Error]", cmdError);
+            await reply({
+              title: "Command Failed",
+              description: String(cmdError?.message || cmdError),
+            }).catch(() => null);
+          }
+          return;
+        }
+
         if (!(interaction.isButton() || interaction.isStringSelectMenu()))
           return;
 
