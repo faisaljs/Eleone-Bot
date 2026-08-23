@@ -50,7 +50,7 @@ const emoji = {
   queue: "<:queue:1541006313880952872>",
   card: "<:card:1541008154941333545>",
   hello: "<:hello:1541011014206623764>",
-  
+  prefix: "<:prefix:1541014321377837197>",
 
   get(name, fallback = "") {
     return this[name] || fallback;

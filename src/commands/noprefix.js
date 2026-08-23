@@ -347,7 +347,7 @@ module.exports = {
   async execute({ bot, message, args, reply }) {
     if (!isOwner(bot, message.author.id)) {
       await reply({
-        title: "Access Denied",
+        title: `${emoji.cross} Access Denied`,
         description: "Only bot owner can use this command.",
       });
       return;
@@ -360,7 +360,7 @@ module.exports = {
       const userId = parseUserId(args[1]);
       if (!userId) {
         await reply({
-          title: "Invalid User",
+          title: `${emoji.danger} Invalid User`,
           description: "Usage: noprefix add <@user|userId>",
         });
         return;
@@ -370,7 +370,7 @@ module.exports = {
       if (existing?.is_active) {
         if (!existing.expires_at) {
           await reply({
-            title: "Already Permanent",
+            title: `${emoji.check} Already Permanent`,
             description: `<@${userId}> already has permanent no-prefix enabled.`,
           });
           return;
@@ -410,7 +410,7 @@ module.exports = {
       const userId = parseUserId(args[1]);
       if (!userId) {
         await reply({
-          title: "Invalid User",
+          title: `${emoji.danger} Invalid User`,
           description: "Usage: noprefix remove <@user|userId>",
         });
         return;
@@ -424,20 +424,20 @@ module.exports = {
 
       if (!removed) {
         await reply({
-          title: "Not Active",
+          title: `${emoji.cross} Not Active`,
           description: "User does not have active no-prefix.",
         });
         return;
       }
 
       await sendNoPrefixLog(bot, {
-        title: "No Prefix Removed",
+        title: `${emoji.check} No Prefix Removed`,
         description: `Removed no-prefix for <@${userId}>.`,
         sections: [{ title: "By", content: `<@${message.author.id}>` }],
       });
 
       await reply({
-        title: "Removed",
+        title: `${emoji.check} Removed`,
         description: `No-prefix removed for <@${userId}>.`,
       });
       return;
@@ -451,7 +451,7 @@ module.exports = {
 
       if (!list.length) {
         await reply({
-          title: "No Prefix List",
+          title: `${emoji.list} No Prefix List`,
           description: "No active no-prefix users.",
         });
         return;
@@ -486,7 +486,7 @@ module.exports = {
 
       if (!row || !row.is_active) {
         await reply({
-          title: "No Prefix Status",
+          title: `${emoji.prefix} No Prefix Status`,
           description: `<@${userId}> is not active.`,
         });
         return;
@@ -501,7 +501,7 @@ module.exports = {
 
       await message.reply(
         buildNoPrefixCard({
-          title: "No Prefix Status",
+          title: `${emoji.prefix} No Prefix Status`,
           targetUser,
           targetUserId: row.user_id,
           addedByUser,
@@ -515,7 +515,7 @@ module.exports = {
     }
 
     await reply({
-      title: "No Prefix Commands",
+      title: `${emoji.prefix} No Prefix Commands`,
       description: "Use one of the owner-only subcommands.",
       fields: [
         { name: "Add", value: "noprefix add <@user|id>" },

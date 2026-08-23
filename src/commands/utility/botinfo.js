@@ -58,15 +58,19 @@ function walkSourceStats(rootDir) {
 
 function getRuntimeStats(bot) {
   const srcDir = path.resolve(__dirname, "..");
-  const pkgPath = path.resolve(srcDir, "..", "package.json");
+  const pkgPath = path.resolve(__dirname, "../../../package.json");
 
   let dependencyNames = [];
+  let botVersion = "Unknown";
+
   if (fs.existsSync(pkgPath)) {
     try {
       const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
       dependencyNames = Object.keys(pkg.dependencies || {});
+      botVersion = pkg.version || "Unknown";
     } catch {
       dependencyNames = [];
+      botVersion = "Unknown";
     }
   }
 
@@ -80,6 +84,7 @@ function getRuntimeStats(bot) {
     users: metrics.totalUsers,
     cachedUsers: metrics.cachedUsers,
     pingMs: Math.max(0, Math.round(bot.client.ws.ping || 0)),
+    botVersion,
     dependencyNames,
     dependencyCount: dependencyNames.length,
     srcFolders: srcStats.folders,
@@ -161,7 +166,7 @@ function renderPage({ bot, token, pageIndex, ownerId }) {
     },
     {
       title: `## ${emoji.tech} Live Technical Stats`,
-      summary: `**Node.js:** ${process.version}\n**Memory (RSS):** ${stats.memoryMb} MB\n**Dependencies:** ${stats.dependencyCount}\n**Source Folders:** ${stats.srcFolders}\n**Source Files:** ${stats.srcFiles}\n**Updated:** ${stats.updatedAt}`,
+      summary: `**Node.js:** ${process.version}\n**Bot Version:** ${stats.botVersion}\n**Memory (RSS):** ${stats.memoryMb} MB\n**Dependencies:** ${stats.dependencyCount}\n**Source Folders:** ${stats.srcFolders}\n**Source Files:** ${stats.srcFiles}\n**Updated:** ${stats.updatedAt}`,
       detail: `**Libraries**\n${stats.dependencyNames.map((x, i) => `${i + 1}. \`${x}\``).join("\n") || "No dependencies found."}\n\nPage **3/3**`,
     },
   ];

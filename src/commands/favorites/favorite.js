@@ -8,6 +8,7 @@ const {
   getFavoriteByIndex,
   removeFavoriteByIndex,
 } = require("../../favorites/store");
+const { emoji } = require("../../config/emoji");
 
 const MAX_LIST_TEXT = 3600;
 
@@ -86,7 +87,7 @@ module.exports = {
     const ok = await hasPremium(message.author.id);
     if (!ok) {
       await reply({
-        title: "Premium Required",
+        title: `${emoji.premium} Premium Required`,
         description: "Favorites vote premium ya buy premium users ke liye hai.",
       });
       return;
@@ -110,7 +111,7 @@ module.exports = {
           !res.tracks?.length
         ) {
           await reply({
-            title: "No Result",
+            title: `${emoji.danger} No Result`,
             description: "Track not found for favorite add.",
           });
           return;
@@ -120,7 +121,7 @@ module.exports = {
         const state = bot.music.get(message.guild.id);
         if (!state?.current) {
           await reply({
-            title: "Nothing Playing",
+            title: `${emoji.danger} Nothing Playing`,
             description: "Play a song or pass query: `favorite add <song>`",
           });
           return;
@@ -131,14 +132,14 @@ module.exports = {
       const result = await addFavorite(message.author.id, track);
       if (result.duplicate) {
         await reply({
-          title: "Already In Favorites",
+          title: `${emoji.check} Already In Favorites`,
           description: "Yeh track pehle se favorite list me hai.",
         });
         return;
       }
 
       await reply({
-        title: "Added To Favorites",
+        title: `${emoji.check} Added To Favorites`,
         description: track.uri
           ? `[${track.title}](${track.uri})`
           : track.title || "Track",
@@ -150,7 +151,7 @@ module.exports = {
       const queueTracks = getQueueTracks(bot, message.guild.id);
       if (!queueTracks.length) {
         await reply({
-          title: "Queue Empty",
+          title: `${emoji.danger} Queue Empty`,
           description: "Queue me koi song nahi hai.",
         });
         return;
