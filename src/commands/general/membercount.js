@@ -80,8 +80,8 @@ module.exports = {
 
     const countStatsText = [
       "**Count Stats**",
-      "| " + buildLine(`${emoji.members}`, "Total Members", totalMembers),
-      "| " + buildLine(`${emoji.member}`, "Total Humans", totalHumans),
+      "| " + buildLine(`${emoji.users}`, "Total Members", totalMembers),
+      "| " + buildLine(`${emoji.user}`, "Total Humans", totalHumans),
       "| " + buildLine(`${emoji.bot}`, "Total Bots", totalBots),
     ].join("\n");
 
