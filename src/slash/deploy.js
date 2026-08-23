@@ -33,3 +33,13 @@ main().catch((error) => {
   console.error("[Slash Deploy Error]", error);
   process.exit(1);
 });
+
+/**
+ * Project: Eleone Bot
+ * Author: faisalg1t (Faisal)
+ * Organization: Eleone Hub
+ * GitHub: https://github.com/faisalg1t
+ * License: Custom
+ * © 2026 Eleone Hub. All rights reserved.
+ */
+
