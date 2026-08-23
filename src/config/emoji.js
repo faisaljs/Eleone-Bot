@@ -2,7 +2,7 @@ const emoji = {
   bot: "<:bot:1540984101056815125>",
   dev: "<:dev:1540985835862757436>",
   tech: "<:tech:1540986758655901716>",
-  expire: "<:expired:1540984286700638208>",
+  expired: "<:expired:1540984286700638208>",
   next: "<:next:1540984674724085780>",
   prev: "<:previous:1540984630218330143>",
   home: "<:home:1540984339280568410>",
@@ -42,6 +42,15 @@ const emoji = {
   dnd: "⛔",
   idle: "🌙",
   offline: "⚫",
+  check: "<:check:1540985688634302465>",
+  cross: "<:cross:1540985656262791238>",
+  danger: "<:danger:1540984197295120424>",
+  setup: "<:setup:1540996471518658611>",
+  sleep: "<:sleep:1540997483423993867>",
+  queue: "<:queue:1541006313880952872>",
+  card: "<:card:1541008154941333545>",
+  hello: "<:hello:1541011014206623764>",
+  
 
   get(name, fallback = "") {
     return this[name] || fallback;

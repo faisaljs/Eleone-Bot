@@ -26,7 +26,7 @@ function buildExpiryDm(bot, voteUntil) {
       {
         type: 17,
         components: [
-          { type: 10, content: `## ${emoji.expire} Vote Premium Expired` },
+          { type: 10, content: `## ${emoji.expired} Vote Premium Expired` },
           { type: 14, divider: true, spacing: 1 },
           {
             type: 10,

@@ -1,5 +1,6 @@
 ﻿const { MessageFlags } = require("discord.js");
 const { formatDuration } = require("../utils/format");
+const { emoji } = require("../config/emoji");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 const PROGRESS_BAR_SIZE = 16;
@@ -83,7 +84,7 @@ function buildGlassWaveNowPlayingCard(input) {
   const status = isPaused ? "Paused" : "Live";
 
   const children = [
-    { type: 10, content: "## Now Playing" },
+    { type: 10, content: `## ${emoji.music} Now Playing` },
     { type: 14, divider: true, spacing: 1 },
     { type: 10, content: `### ${trackTitle}` },
     {

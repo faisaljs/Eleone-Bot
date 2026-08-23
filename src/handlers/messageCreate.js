@@ -6,6 +6,7 @@ const {
   processAfkMentions,
   clearAuthorAfkIfNeeded,
 } = require("../general/afkService");
+const { emoji } = require("../config/emoji");
 
 const MUSIC_LOCK_COMMANDS = new Set([
   "play",
@@ -71,7 +72,7 @@ function buildMentionPayload(bot, prefix) {
     null;
 
   const children = [
-    { type: 10, content: "## Hello, I am Eleone" },
+    { type: 10, content: `## ${emoji.hello} Hello, I am Eleone` },
     { type: 14, divider: true, spacing: 1 },
     {
       type: 9,

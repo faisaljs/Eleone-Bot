@@ -64,7 +64,7 @@ module.exports = {
         {
           type: 17,
           components: [
-            { type: 10, content: "## Generate Premium Token" },
+            { type: 10, content: `## ${emoji.premium} Generate Premium Token` },
             { type: 14, divider: true, spacing: 1 },
             { type: 10, content: "Select duration plan from dropdown." },
             { type: 10, content: `**Plans (INR)**\n${plansText()}` },
@@ -102,7 +102,7 @@ module.exports = {
             {
               type: 17,
               components: [
-                { type: 10, content: `## ${emoji.expire} Token Session Expired` },
+                { type: 10, content: `## ${emoji.expired} Token Session Expired` },
                 { type: 14, divider: true, spacing: 1 },
                 { type: 10, content: "Run premiumtoken command again." },
               ],
@@ -141,7 +141,7 @@ module.exports = {
               {
                 type: 17,
                 components: [
-                  { type: 10, content: "## Premium Token Created" },
+                  { type: 10, content: `## ${emoji.premium} Premium Token Created` },
                   { type: 14, divider: true, spacing: 1 },
                   { type: 10, content: `**Token:** \`${tokenCode}\`` },
                   { type: 10, content: `**Plan:** ${plan.label}` },
@@ -164,7 +164,7 @@ module.exports = {
             {
               type: 17,
               components: [
-                { type: 10, content: "## Token Generated" },
+                { type: 10, content: `## ${emoji.premium} Token Generated` },
                 { type: 14, divider: true, spacing: 1 },
                 { type: 10, content: `Plan: **${plan.label}**` },
                 { type: 10, content: `Price: **INR ${plan.priceInr}**` },
@@ -187,7 +187,7 @@ module.exports = {
             {
               type: 17,
               components: [
-                { type: 10, content: "## Token Generation Failed" },
+                { type: 10, content: `## ${emoji.danger} Token Generation Failed` },
                 { type: 14, divider: true, spacing: 1 },
                 { type: 10, content: String(error.message || error) },
               ],

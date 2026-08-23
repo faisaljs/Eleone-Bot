@@ -10,6 +10,7 @@ const {
   voteUrl,
   buyUrl,
 } = require("../../premium/service");
+const { emoji } = require("../../config/emoji");
 
 const AVAILABLE = "`ease`, `glass`, `neon`, `sunset`, `ocean`, `mono`";
 
@@ -58,7 +59,7 @@ module.exports = {
           {
             type: 17,
             components: [
-              { type: 10, content: "## Guild Premium Required" },
+              { type: 10, content: `## ${emoji.premium} Guild Premium Required` },
               { type: 14, divider: true, spacing: 1 },
               { type: 10, content: "No active guild premium found." },
               {

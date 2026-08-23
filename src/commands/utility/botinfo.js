@@ -202,7 +202,7 @@ function buildExpiredPayload() {
       {
         type: 17,
         components: [
-          { type: 10, content: `## ${emoji.expire} Bot Info Panel Expired` },
+          { type: 10, content: `## ${emoji.expired} Bot Info Panel Expired` },
           { type: 14, divider: true, spacing: 1 },
           { type: 10, content: "Run `botinfo` again." },
         ],

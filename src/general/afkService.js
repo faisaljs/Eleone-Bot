@@ -16,6 +16,7 @@ const {
   clearAfkNick,
   clearAllAfkNicksByUser,
 } = require("../database/afk");
+const { emoji } = require("../config/emoji");
 
 function toUnix(ts) {
   const ms = new Date(ts || 0).getTime();
@@ -186,7 +187,7 @@ function buildAfkDmPayload({
 
 async function buildAfkNoticePayload(bot, statuses) {
   const components = [
-    { type: 10, content: "## AFK Notice" },
+    { type: 10, content: `## ${emoji.sleep} AFK Notice` },
     { type: 14, divider: true, spacing: 1 },
     { type: 10, content: "Mentioned user is currently AFK." },
   ];

@@ -1,4 +1,5 @@
 const { MessageFlags } = require("discord.js");
+const { emoji } = require("../../config/emoji");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 const PAGE_SIZE = 10;
@@ -50,7 +51,7 @@ function buildQueueMessage(queue, page, token) {
   );
 
   const children = [
-    { type: 10, content: "## Music Queue" },
+    { type: 10, content: `## ${emoji.queue} Music Queue` },
     { type: 14, divider: true, spacing: 1 },
     { type: 10, content: "**Now Playing**\n" + nowPlaying },
     {
@@ -149,7 +150,7 @@ module.exports = {
           {
             type: 17,
             components: [
-              { type: 10, content: "## Your Music Queue" },
+              { type: 10, content: `## ${emoji.expired} Your Music Queue` },
               { type: 14, divider: true, spacing: 1 },
               {
                 type: 10,
@@ -176,7 +177,7 @@ module.exports = {
           {
             type: 17,
             components: [
-              { type: 10, content: "## Music Queue" },
+              { type: 10, content: `## ${emoji.queue} Music Queue` },
               { type: 14, divider: true, spacing: 1 },
               { type: 10, content: "Queue is empty now." },
             ],

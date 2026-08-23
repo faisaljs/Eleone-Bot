@@ -16,6 +16,7 @@ const {
   getSettings,
   setSettings,
 } = require("../../playlists/store");
+const { emoji } = require("../../config/emoji");
 
 const MAX_LIST_TEXT = 3500;
 
@@ -727,7 +728,7 @@ module.exports = {
           {
             type: 17,
             components: [
-              { type: 10, content: "## Playlist Export" },
+              { type: 10, content: `## ${emoji.playlist} Playlist Export` },
               { type: 14, divider: true, spacing: 1 },
               {
                 type: 10,
@@ -1008,7 +1009,7 @@ module.exports = {
           {
             type: 17,
             components: [
-              { type: 10, content: "## Auto-Loaded Playlist" },
+              { type: 10, content: `## ${emoji.playlist} Auto-Loaded Playlist` },
               { type: 14, divider: true, spacing: 1 },
               {
                 type: 10,

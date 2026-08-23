@@ -4,6 +4,7 @@ const {
 } = require("../commands/premium/profile");
 const { voteUrl, buyUrl } = require("../premium/service");
 const { getVoicePlayEnabled, setVoicePlayEnabled } = require("./store");
+const { emoji } = require("../config/emoji");
 
 async function ensureListeningConnection({ bot, message, reply }) {
   const member =
@@ -103,7 +104,7 @@ module.exports = {
             {
               type: 17,
               components: [
-                { type: 10, content: "## Premium Required" },
+                { type: 10, content: `## ${emoji.premium} Premium Required` },
                 { type: 14, divider: true, spacing: 1 },
                 {
                   type: 10,

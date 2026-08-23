@@ -85,7 +85,7 @@ function buildChoosePayload({ token, reason, userId }) {
       {
         type: 17,
         components: [
-          { type: 10, content: "## AFK Setup" },
+          { type: 10, content: `## ${emoji.sleep} AFK Setup` },
           { type: 14, divider: true, spacing: 1 },
           { type: 10, content: "Choose AFK mode from buttons below." },
           { type: 10, content: `**Reason**\n${reason}` },
@@ -122,7 +122,7 @@ function buildEnabledPayload({ scope, reason, setAt, userId }) {
       {
         type: 17,
         components: [
-          { type: 10, content: `## ${scopeText} AFK Enabled` },
+          { type: 10, content: `## ${emoji.sleep} ${scopeText} AFK Enabled` },
           { type: 14, divider: true, spacing: 1 },
           { type: 10, content: `AFK is active for <@${userId}>.` },
           { type: 10, content: `**Reason**\n${reason}` },
@@ -195,7 +195,7 @@ module.exports = {
           {
             type: 17,
             components: [
-              { type: 10, content: "## AFK Status" },
+              { type: 10, content: `## ${emoji.sleep} AFK Status` },
               { type: 14, divider: true, spacing: 1 },
               {
                 type: 9,
@@ -227,7 +227,7 @@ module.exports = {
           {
             type: 17,
             components: [
-              { type: 10, content: "## Premium Required" },
+              { type: 10, content: `## ${emoji.premium} Premium Required` },
               { type: 14, divider: true, spacing: 1 },
               {
                 type: 10,
@@ -305,7 +305,7 @@ module.exports = {
             {
               type: 17,
               components: [
-                { type: 10, content: `## ${emoji.expire} AFK Panel Expired` },
+                { type: 10, content: `## ${emoji.expired} AFK Panel Expired` },
                 { type: 14, divider: true, spacing: 1 },
                 { type: 10, content: "Run afk command again." },
               ],
@@ -335,7 +335,7 @@ module.exports = {
             {
               type: 17,
               components: [
-                { type: 10, content: "## Premium Required" },
+                { type: 10, content: `## ${emoji.premium} Premium Required` },
                 { type: 14, divider: true, spacing: 1 },
                 {
                   type: 10,

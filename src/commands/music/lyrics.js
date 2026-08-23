@@ -176,6 +176,7 @@ function buildLyricsPayload(view) {
           style: 2,
           custom_id: `lyrics_nav:${view.token}:prev`,
           label: "Previous",
+          emoji: emoji.prev,
           disabled: index <= 0,
         },
         {
@@ -183,6 +184,7 @@ function buildLyricsPayload(view) {
           style: 2,
           custom_id: `lyrics_nav:${view.token}:home`,
           label: "Home",
+          emoji: emoji.home,
           disabled: index === 0,
         },
         {
@@ -190,6 +192,7 @@ function buildLyricsPayload(view) {
           style: 2,
           custom_id: `lyrics_nav:${view.token}:next`,
           label: "Next",
+          emoji: emoji.next,
           disabled: index >= total - 1,
         },
       ],
@@ -318,7 +321,7 @@ module.exports = {
             {
               type: 17,
               components: [
-                { type: 10, content: `## ${emoji.expire} Lyrics Panel Expired` },
+                { type: 10, content: `## ${emoji.expired} Lyrics Panel Expired` },
                 { type: 14, divider: true, spacing: 1 },
                 { type: 10, content: "Run lyrics command again." },
               ],
@@ -337,7 +340,7 @@ module.exports = {
             {
               type: 17,
               components: [
-                { type: 10, content: "## Not Allowed" },
+                { type: 10, content: `## ${emoji.danger} Not Allowed` },
                 { type: 14, divider: true, spacing: 1 },
                 {
                   type: 10,

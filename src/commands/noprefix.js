@@ -11,6 +11,7 @@ const {
   sendNoPrefixLog,
   formatExpiry,
 } = require("../services/noPrefixService");
+const { emoji } = require("../config/emoji");
 
 const COMPONENTS_V2_FLAG = MessageFlags?.IsComponentsV2 ?? 1 << 15;
 const LIST_PAGE_SIZE = 4;
@@ -92,7 +93,7 @@ function buildDurationPickerPayload(mode, token, targetUserId) {
       {
         type: 17,
         components: [
-          { type: 10, content: "## No Prefix Duration" },
+          { type: 10, content: `## ${emoji.clock} No Prefix Duration` },
           { type: 14, divider: true, spacing: 1 },
           {
             type: 10,
@@ -127,7 +128,7 @@ function buildReAddWarningPayload(token, targetUserId, expiresAt) {
       {
         type: 17,
         components: [
-          { type: 10, content: "## Already Active" },
+          { type: 10, content: `## ${emoji.check} Already Active` },
           { type: 14, divider: true, spacing: 1 },
           {
             type: 10,
@@ -293,7 +294,7 @@ async function buildListPagePayload({ bot, guild, rows, page, token }) {
   );
 
   const children = [
-    { type: 10, content: "## No-Prefix Users" },
+    { type: 10, content: `## ${emoji.users} No-Prefix Users` },
     { type: 14, divider: true, spacing: 1 },
   ];
 
@@ -544,7 +545,7 @@ module.exports = {
               {
                 type: 17,
                 components: [
-                  { type: 10, content: "## Request Expired" },
+                  { type: 10, content: `## ${emoji.expired} Request Expired` },
                   { type: 14, divider: true, spacing: 1 },
                   { type: 10, content: "Run the add command again." },
                 ],
@@ -572,7 +573,7 @@ module.exports = {
               {
                 type: 17,
                 components: [
-                  { type: 10, content: "## Cancelled" },
+                  { type: 10, content: `## ${emoji.cross} Cancelled` },
                   { type: 14, divider: true, spacing: 1 },
                   { type: 10, content: "No changes were made." },
                 ],
@@ -608,7 +609,7 @@ module.exports = {
               {
                 type: 17,
                 components: [
-                  { type: 10, content: "## Request Expired" },
+                  { type: 10, content: `## ${emoji.expired} Request Expired` },
                   { type: 14, divider: true, spacing: 1 },
                   { type: 10, content: "Run the add command again." },
                 ],
@@ -630,7 +631,7 @@ module.exports = {
               {
                 type: 17,
                 components: [
-                  { type: 10, content: "## Access Denied" },
+                  { type: 10, content: `## ${emoji.danger} Access Denied` },
                   { type: 14, divider: true, spacing: 1 },
                   {
                     type: 10,
@@ -662,7 +663,7 @@ module.exports = {
                 {
                   type: 17,
                   components: [
-                    { type: 10, content: "## Re-Add Failed" },
+                    { type: 10, content: `## ${emoji.danger} Re-Add Failed` },
                     { type: 14, divider: true, spacing: 1 },
                     {
                       type: 10,
@@ -685,7 +686,7 @@ module.exports = {
                 {
                   type: 17,
                   components: [
-                    { type: 10, content: "## Already Permanent" },
+                    { type: 10, content: `## ${emoji.check} Already Permanent` },
                     { type: 14, divider: true, spacing: 1 },
                     {
                       type: 10,
@@ -724,7 +725,7 @@ module.exports = {
               {
                 type: 17,
                 components: [
-                  { type: 10, content: "## No Prefix Error" },
+                  { type: 10, content: `## ${emoji.danger} No Prefix Error` },
                   { type: 14, divider: true, spacing: 1 },
                   { type: 10, content: String(err.message || err) },
                 ],
@@ -795,7 +796,7 @@ module.exports = {
               {
                 type: 17,
                 components: [
-                  { type: 10, content: "## No-Prefix Users" },
+                  { type: 10, content: `## ${emoji.expired} No-Prefix Users` },
                   { type: 14, divider: true, spacing: 1 },
                   {
                     type: 10,
@@ -838,7 +839,7 @@ module.exports = {
               {
                 type: 17,
                 components: [
-                  { type: 10, content: "## No-Prefix Users" },
+                  { type: 10, content: `## ${emoji.danger} No-Prefix Users` },
                   { type: 14, divider: true, spacing: 1 },
                   { type: 10, content: "Guild is not available anymore." },
                 ],
