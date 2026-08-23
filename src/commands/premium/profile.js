@@ -1,5 +1,7 @@
 const { supabase } = require("../../database/supabase");
 
+const FREE_MODE = String(process.env.FREE_MODE || "").toLowerCase() === "true";
+
 const CACHE_TTL_MS = 60 * 1000;
 const userCache = new Map();
 const guildCache = new Map();
@@ -20,6 +22,7 @@ function isActiveVote(row) {
 }
 
 function isGuildPaidPremiumActive(row) {
+  if (FREE_MODE) return true;
   if (!row) return false;
   if (row.premium_is_permanent) return true;
   const until = toDate(row.premium_until);
@@ -27,6 +30,7 @@ function isGuildPaidPremiumActive(row) {
 }
 
 function isGuildAnyPremiumRowActive(row) {
+  if (FREE_MODE) return true;
   return isActiveVote(row) || isGuildPaidPremiumActive(row);
 }
 
@@ -129,12 +133,14 @@ async function activateUserVotePremium(
 }
 
 async function isVotePremiumActive(userId) {
+  if (FREE_MODE) return true;
   const row = await getUserPremiumRow(userId).catch(() => null);
   if (!row) return false;
   return isActiveVote(row);
 }
 
 async function hasUserPaidPremiumAccess(userId) {
+  if (FREE_MODE) return true;
   const now = nowIso();
   const { data, error } = await supabase
     .from("guild_vote_premium")
@@ -321,12 +327,14 @@ async function activateGuildPaidPremium(guildId, userId, options) {
 }
 
 async function isGuildVotePremiumActive(guildId) {
+  if (FREE_MODE) return true;
   const row = await getGuildVoteRow(guildId).catch(() => null);
   if (!row) return false;
   return isActiveVote(row);
 }
 
 async function isGuildAnyPremiumActive(guildId) {
+  if (FREE_MODE) return true;
   const row = await getGuildVoteRow(guildId).catch(() => null);
   return isGuildAnyPremiumRowActive(row);
 }
