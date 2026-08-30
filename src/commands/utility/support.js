@@ -12,7 +12,7 @@ module.exports = {
       "https://discord.gg/TGF3fCXtRm";
     const githubUrl =
       process.env.NO_PREFIX_CONTACT_GITHUB_URL ||
-      "https://github.com/faisalg1t";
+      "https://github.com/faisaljs";
     const dmUrl = bot.config?.noPrefix?.ownerId
       ? `https://discord.com/users/${bot.config.noPrefix.ownerId}`
       : serverUrl;
@@ -49,11 +49,11 @@ module.exports = {
   },
 };
 
-/**
+/*
  * Project: Eleone Bot
- * Author: faisalg1t (Faisal)
+ * Author: faisaljs (Faisal)
  * Organization: Eleone Hub
- * GitHub: https://github.com/faisalg1t
+ * GitHub: https://github.com/faisaljs
  * License: Custom
  * © 2026 Eleone Hub. All rights reserved.
  */

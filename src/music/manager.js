@@ -2110,11 +2110,11 @@ class MusicManager {
 
 module.exports = { MusicManager };
 
-/**
+/*
  * Project: Eleone Bot
- * Author: faisalg1t (Faisal)
+ * Author: faisaljs (Faisal)
  * Organization: Eleone Hub
- * GitHub: https://github.com/faisalg1t
+ * GitHub: https://github.com/faisaljs
  * License: Custom
  * © 2026 Eleone Hub. All rights reserved.
  */

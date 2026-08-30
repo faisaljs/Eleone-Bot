@@ -150,7 +150,7 @@ function renderPage({ bot, token, pageIndex, ownerId }) {
     : process.env.DEVELOPER_DISCORD_URL ||
       "https://discord.com/users/1148264513343336560";
   const ownerGithubUrl =
-    process.env.DEVELOPER_GITHUB_URL || "https://github.com/faisalg1t";
+    process.env.DEVELOPER_GITHUB_URL || "https://github.com/faisaljs";
   const ownerLabel = process.env.DEVELOPER_NAME || "Alex";
 
   const pages = [
@@ -286,11 +286,11 @@ module.exports = {
   },
 };
 
-/**
+/*
  * Project: Eleone Bot
- * Author: faisalg1t (Faisal)
+ * Author: faisaljs (Faisal)
  * Organization: Eleone Hub
- * GitHub: https://github.com/faisalg1t
+ * GitHub: https://github.com/faisaljs
  * License: Custom
  * © 2026 Eleone Hub. All rights reserved.
  */

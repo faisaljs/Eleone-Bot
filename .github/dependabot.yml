@@ -17,7 +17,7 @@ updates:
       - "dependencies"
 
     reviewers:
-      - "faisalg1t"
+      - "faisaljs"
 
     commit-message:
       prefix: "chore"
@@ -59,7 +59,7 @@ updates:
       - "github-actions"
 
     reviewers:
-      - "faisalg1t"
+      - "faisaljs"
 
     commit-message:
       prefix: "ci"
