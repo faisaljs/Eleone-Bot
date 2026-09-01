@@ -1291,18 +1291,36 @@ class MusicManager {
     const channel = await this.resolveTextChannel(state.textChannelId);
     if (!channel) return;
 
+    const track = state.current;
+    if (!track?.encoded) return;
+
+    const trackEncoded = track.encoded;
+
     const sent = await channel.send(payload).catch(async (error) => {
       console.error("[NowPlaying Send Error]", error?.message || error);
+
       await this.sendContainer(state.textChannelId, {
         title: "Now Playing",
-        description: state.current?.title || "Unknown Track",
+        description: track.title || "Unknown Track",
       });
+
       return null;
     });
 
     if (!sent) return;
 
-    const trackEncoded = state.current.encoded;
+    // Track may have ended while channel.send() was running
+    const latestState = this.states.get(guildId);
+
+    if (
+      !latestState ||
+      !latestState.current ||
+      latestState.current.encoded !== trackEncoded
+    ) {
+      await sent.delete().catch(() => null);
+      return;
+    }
+
     const interval = setInterval(async () => {
       const latest = this.states.get(guildId);
       if (
@@ -1333,7 +1351,7 @@ class MusicManager {
       trackEncoded,
       interval,
       message: sent,
-      ownerUserId: state.current?.requesterId || null,
+      ownerUserId: track.requesterId || null,
     });
   }
 
