@@ -13,12 +13,12 @@
     "node": ">=20.0.0"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^2.117.1",
+    "@supabase/supabase-js": "^2.117.2",
     "discord.js": "^14.18.0",
     "dotenv": "^16.4.7",
     "musicard": "^3.0.1",
     "shoukaku": "^4.1.0",
-    "ws": "^8.15.0"
+    "ws": "^8.22.0"
   },
   "devDependencies": {
     "prettier": "^3.9.9"
